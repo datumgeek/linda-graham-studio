@@ -1,38 +1,33 @@
 export function AboutPage() {
   return (
-    <div className="container mx-auto p-6 max-w-3xl">
+    <div className="container mx-auto px-4 sm:px-6 py-6 max-w-3xl">
       {/* Contact Section */}
-      <div className="prose mb-8">
-        <h1>Contact</h1>
-        <p>
-          <strong>I would love to hear from you</strong>
-        </p>
-        <p>
-          Linda Graham
-          <br />
-          <a href="mailto:lgraham938@hotmail.com" className="link link-primary">
-            lgraham938@hotmail.com
-          </a>
-          <br />
-          303-829-2295
-        </p>
-        <p>
-          Linda Graham
-          <br />
-          9260 E. Jewell Circle
-          <br />
-          Denver, CO 80231
-        </p>
-      </div>
+      <section className="mb-10">
+        <h1 className="text-3xl sm:text-4xl font-serif font-semibold mb-4">Contact</h1>
+        <div className="bg-base-200 rounded-xl p-5 sm:p-6">
+          <p className="text-base mb-3 font-medium">I would love to hear from you</p>
+          <div className="space-y-1 text-sm sm:text-base">
+            <p>Linda Graham</p>
+            <p>
+              <a href="mailto:lgraham938@hotmail.com" className="link link-primary">
+                lgraham938@hotmail.com
+              </a>
+            </p>
+            <p>303-829-2295</p>
+          </div>
+          <div className="mt-4 pt-4 border-t border-base-300 text-sm sm:text-base">
+            <p>9260 E. Jewell Circle</p>
+            <p>Denver, CO 80231</p>
+          </div>
+        </div>
+      </section>
 
       <div className="divider" />
 
       {/* Bio Section */}
-      <div className="prose">
-        <h1>Bio and Resume</h1>
-        <p>
-          <strong>BIO</strong>
-        </p>
+      <section className="prose prose-sm sm:prose-base max-w-none">
+        <h1 className="text-3xl sm:text-4xl font-serif font-semibold">Bio and Resume</h1>
+
         <p>
           Linda Graham earned a Bachelor of Arts degree from Miami University,
           Oxford, Ohio with a major in Biology and a minor in Chemistry in 1960.
@@ -48,8 +43,8 @@ export function AboutPage() {
           Aurora, CO near Colfax Avenue and earning a masters of public
           administration from the University of Colorado Denver in 2001.
         </p>
-        <p>Linda says,</p>
-        <p>
+
+        <blockquote className="border-l-4 border-primary/40 pl-4 italic opacity-90">
           "In the summer of 1991, I joined a group interested in the creation of
           an arts organization in the Original Aurora area of Aurora. We explored
           the needs of the community as well as possible funding sources. I
@@ -58,8 +53,9 @@ export function AboutPage() {
           making of art for the community. Our first project was a 20' x 60'
           Community Clay Tile Mural. I spent the next 12 years as founding
           director, volunteering when necessary, receiving a salary when
-          available, "making art a part of community life."
-        </p>
+          available, 'making art a part of community life.'"
+        </blockquote>
+
         <p>
           Downtown Aurora Visual Arts, widely known now as DAVA, was
           incorporated as a non-profit organization in 1993 and continues today
@@ -79,20 +75,19 @@ export function AboutPage() {
           Linda now works in her home studio and exhibits at the Ice Cube Gallery
           in Denver.
         </p>
-        <p>
-          <strong>RESUME</strong>
-        </p>
+
+        <h2 className="font-serif">Resume</h2>
         <p>
           <a
             href="http://lindagrahamstudio.com/wp-content/uploads/2013/08/Resume2013.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="link link-primary"
+            className="btn btn-outline btn-primary btn-sm"
           >
-            Click to download
+            Download Resume (PDF)
           </a>
         </p>
-      </div>
+      </section>
     </div>
   );
 }

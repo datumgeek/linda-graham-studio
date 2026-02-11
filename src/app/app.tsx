@@ -1,30 +1,51 @@
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
-import { HomePage } from './pages/HomePage';
-import { PortfolioListPage } from './pages/PortfolioListPage';
-import { PortfolioLayout } from './pages/PortfolioLayout';
-import { PortfolioHomePage } from './pages/PortfolioHomePage';
-import { PortfolioGridPage } from './pages/PortfolioGridPage';
-import { PortfolioCarouselPage } from './pages/PortfolioCarouselPage';
-import { AboutPage } from './pages/AboutPage';
+import { PageSkeleton } from './components/PageSkeleton';
+
+const HomePage = lazy(() =>
+  import('./pages/HomePage').then((m) => ({ default: m.HomePage })),
+);
+const PortfolioListPage = lazy(() =>
+  import('./pages/PortfolioListPage').then((m) => ({ default: m.PortfolioListPage })),
+);
+const PortfolioLayout = lazy(() =>
+  import('./pages/PortfolioLayout').then((m) => ({ default: m.PortfolioLayout })),
+);
+const PortfolioHomePage = lazy(() =>
+  import('./pages/PortfolioHomePage').then((m) => ({ default: m.PortfolioHomePage })),
+);
+const PortfolioGridPage = lazy(() =>
+  import('./pages/PortfolioGridPage').then((m) => ({ default: m.PortfolioGridPage })),
+);
+const PortfolioCarouselPage = lazy(() =>
+  import('./pages/PortfolioCarouselPage').then((m) => ({
+    default: m.PortfolioCarouselPage,
+  })),
+);
+const AboutPage = lazy(() =>
+  import('./pages/AboutPage').then((m) => ({ default: m.AboutPage })),
+);
 
 export function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/portfolio/:listName" element={<PortfolioListPage />} />
-        <Route
-          path="/portfolio/:listName/:portfolioKey"
-          element={<PortfolioLayout />}
-        >
-          <Route index element={<PortfolioHomePage />} />
-          <Route path="grid" element={<PortfolioGridPage />} />
-          <Route path="carousel/:slideIndex" element={<PortfolioCarouselPage />} />
+    <Suspense fallback={<PageSkeleton />}>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/portfolio/:listName" element={<PortfolioListPage />} />
+          <Route
+            path="/portfolio/:listName/:portfolioKey"
+            element={<PortfolioLayout />}
+          >
+            <Route index element={<PortfolioHomePage />} />
+            <Route path="grid" element={<PortfolioGridPage />} />
+            <Route path="carousel/:slideIndex" element={<PortfolioCarouselPage />} />
+          </Route>
+          <Route path="/about" element={<AboutPage />} />
         </Route>
-        <Route path="/about" element={<AboutPage />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </Suspense>
   );
 }
 

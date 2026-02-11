@@ -21,16 +21,16 @@ export function PortfolioListPage() {
   const label = portfolioListLabels[listName as PortfolioListName];
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-8">{label}</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div className="container mx-auto px-4 sm:px-6 py-6">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">{label}</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         {list.map((portfolio) => (
           <Link
             key={portfolio.portfolio}
             to={`/portfolio/${listName}/${portfolio.portfolio}`}
-            className="card bg-base-100 shadow-md hover:shadow-xl transition-shadow cursor-pointer"
+            className="group card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
           >
-            <figure>
+            <figure className="overflow-hidden">
               <img
                 src={getPortfolioThumbUrl(
                   listName as PortfolioListName,
@@ -38,11 +38,13 @@ export function PortfolioListPage() {
                   portfolio.portfolioImage,
                 )}
                 alt={portfolio.portfolioName}
-                className="w-full h-48 object-cover"
+                className="w-full h-44 sm:h-48 object-cover transition-transform duration-300
+                           group-hover:scale-105"
+                loading="lazy"
               />
             </figure>
-            <div className="card-body p-4">
-              <h2 className="card-title text-sm">{portfolio.portfolioName}</h2>
+            <div className="card-body p-3 sm:p-4">
+              <h2 className="card-title text-sm sm:text-base">{portfolio.portfolioName}</h2>
             </div>
           </Link>
         ))}

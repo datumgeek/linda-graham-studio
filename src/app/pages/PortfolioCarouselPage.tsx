@@ -4,6 +4,7 @@ import { usePortfolioContext } from '../hooks/usePortfolioContext';
 import { getImageUrl } from '../data/portfolio-data';
 import { useSwipe } from '../hooks/useSwipe';
 import { Lightbox } from '../components/Lightbox';
+import { VideoEmbed } from '../components/VideoEmbed';
 
 export function PortfolioCarouselPage() {
   const { slideIndex, listName: listNameParam, portfolioKey } = useParams<{
@@ -119,11 +120,10 @@ export function PortfolioCarouselPage() {
           }`}
         >
           {isVideo ? (
-            <iframe
-              src={current.videoLarge}
-              className="w-full max-w-3xl aspect-video rounded"
-              allowFullScreen
+            <VideoEmbed
+              src={current.videoLarge!}
               title={caption}
+              className="w-full max-w-3xl aspect-video"
             />
           ) : (
             <img

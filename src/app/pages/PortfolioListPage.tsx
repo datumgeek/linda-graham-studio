@@ -7,6 +7,7 @@ import {
 } from '../data/portfolio-data';
 import { FadeIn } from '../components/FadeIn';
 import { ProgressiveImage } from '../components/ProgressiveImage';
+import { SEO } from '../components/SEO';
 
 export function PortfolioListPage() {
   const { listName } = useParams<{ listName: string }>();
@@ -24,6 +25,11 @@ export function PortfolioListPage() {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 py-6">
+      <SEO
+        title={label}
+        description={`Browse ${label.toLowerCase()} by artist Linda Graham.`}
+        path={`/portfolio/${listName}`}
+      />
       <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">{label}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         {list.map((portfolio, index) => (

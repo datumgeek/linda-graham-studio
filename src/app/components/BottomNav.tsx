@@ -44,7 +44,7 @@ export function BottomNav() {
   const location = useLocation();
 
   return (
-    <nav className="btm-nav btm-nav-sm lg:hidden z-50 border-t border-base-300 bg-base-100/95 backdrop-blur-sm">
+    <nav className="btm-nav btm-nav-sm lg:hidden z-50 border-t border-base-300 bg-base-100/95 backdrop-blur-sm" aria-label="Mobile navigation">
       {navItems.map((item) => {
         const isActive = item.end
           ? location.pathname === item.to

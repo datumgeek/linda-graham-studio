@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import * as ReactDOM from 'react-dom/client';
 import App from './app/app';
 
@@ -11,8 +12,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <StrictMode>
-    <BrowserRouter basename={basename}>
-      <App />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter basename={basename}>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
   </StrictMode>,
 );

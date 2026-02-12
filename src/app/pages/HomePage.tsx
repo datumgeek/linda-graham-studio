@@ -3,6 +3,7 @@ import {
   portfolios,
   getPortfolioThumbUrl,
 } from '../data/portfolio-data';
+import { SEO } from '../components/SEO';
 
 // Pick a few featured works for the section below the fold
 const featured = [
@@ -15,6 +16,7 @@ const featured = [
 export function HomePage() {
   return (
     <div>
+      <SEO />
       {/* ── Hero Section with Ken Burns animation ── */}
       <div className="hero min-h-[calc(100vh-4rem)] relative overflow-hidden">
         <div

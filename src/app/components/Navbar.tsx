@@ -13,7 +13,7 @@ export function Navbar() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <div className="navbar bg-base-100/95 backdrop-blur-sm shadow-sm fixed top-0 left-0 right-0 z-50">
+    <nav className="navbar bg-base-100/95 backdrop-blur-sm shadow-sm fixed top-0 left-0 right-0 z-50" aria-label="Main navigation">
       <div className="navbar-start">
         {/* Hamburger — only visible between sm and lg (tablet). On phone, bottom nav is used. */}
         <div className="dropdown hidden sm:block lg:hidden">
@@ -77,6 +77,6 @@ export function Navbar() {
         </ul>
       </div>
       <div className="navbar-end" />
-    </div>
+    </nav>
   );
 }

@@ -16,6 +16,13 @@ export interface Portfolio {
 
 export interface PortfolioDescription {
   title: string;
+  venue?: string;
+  location?: string;
+  year?: number;
+  medium?: string;
+  artistStatement?: string;
+  curatorNote?: { text: string; author: string };
+  collaborator?: string;
   paragraphs: string[];
 }
 
@@ -34,12 +41,13 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
       portfolioImage: 'ShowsPromiseWindo-Exhibit-300x200.jpg',
       description: {
         title: 'Natural Selection',
-        paragraphs: [
-          'in the "Shows Promise" window gallery',
-          'Denver International Airport',
-          '2010',
-          '"The spiral forms bring to mind the morning glory vines, swirling galaxies, hurricanes seen from outer space, molecular structures, and most growing thing that bend and sway in the forest, from the smallest to the largest elements of this world. They are products of my mind, composites of lots of looking at hairy, feathery plants the grow in streams, pods that fall at the end of the growing season, geometric solids and geological layering of many western landscapes" Linda Graham',
-        ],
+        venue: '"Shows Promise" Window Gallery',
+        location: 'Denver International Airport',
+        year: 2010,
+        medium: 'Clay sculpture',
+        artistStatement:
+          'The spiral forms bring to mind the morning glory vines, swirling galaxies, hurricanes seen from outer space, molecular structures, and most growing thing that bend and sway in the forest, from the smallest to the largest elements of this world. They are products of my mind, composites of lots of looking at hairy, feathery plants the grow in streams, pods that fall at the end of the growing season, geometric solids and geological layering of many western landscapes.',
+        paragraphs: [],
       },
       images: [
         { imageCaption: 'Close Up', imageSmall: 'CloseUp-copy-162x162.jpg', imageLarge: 'CloseUp-copy-501x500.jpg' },
@@ -55,15 +63,15 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
       portfolioImage: 'Screen-Shot-2013-08-26-at-10.19.52-AM1-300x200.png',
       description: {
         title: 'Multiverse 3',
-        paragraphs: [
-          'Rude Gallery',
-          'Rocky Mountain College of Art + Design',
-          'Denver, CO',
-          '2013',
-          "Linda Graham's work has shifted from a focus on sculptural clay work to new media installations that take on a host of materials from projection to plexiglass. These media installations engage with concepts of the microcosm to the macrocosm, from cellular structure to interstellar elements.",
-          "Multiverse 3 is a projection piece that radically transforms the Rude Gallery into an ungrounded interface, redrafting the room's environments features.",
-          'Cortney Stell',
-        ],
+        venue: 'Rude Gallery, Rocky Mountain College of Art + Design',
+        location: 'Denver, CO',
+        year: 2013,
+        medium: 'Projection, plexiglass',
+        curatorNote: {
+          text: "Linda Graham's work has shifted from a focus on sculptural clay work to new media installations that take on a host of materials from projection to plexiglass. These media installations engage with concepts of the microcosm to the macrocosm, from cellular structure to interstellar elements. Multiverse 3 is a projection piece that radically transforms the Rude Gallery into an ungrounded interface, redrafting the room's environments features.",
+          author: 'Cortney Stell',
+        },
+        paragraphs: [],
       },
       images: [
         { imageCaption: 'Multiverse 3', imageSmall: 'Screen-Shot-2013-08-26-at-10.13.54-AM-162x162.png', imageLarge: 'Screen-Shot-2013-08-26-at-10.13.54-AM.png' },
@@ -76,11 +84,13 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
       portfolioImage: 'IceCubeGallery-300x200.jpg',
       description: {
         title: 'Electromagnetic Transformation',
-        paragraphs: [
-          'Ice Cube Gallery',
-          'Denver, CO',
-          '2013',
+        venue: 'Ice Cube Gallery',
+        location: 'Denver, CO',
+        year: 2013,
+        medium: 'Plexiglass, ultraviolet light, fluorescent materials',
+        artistStatement:
           'The pieces of Electromagnetic Transformations explore the fascinating properties of plexiglass when exposed to various light wave lengths. In Multiverse 3, a projection cast onto a bent sheet of yellow plexiglass creates the illusion of three dimensions and shows a change in the wave length when light travels across the curved surface. In Illusive Reality, the fluorescent edges are highlighted when exposed to ultraviolet light that can\'t be seen until the wave length is reduced to the visible range when a photon is released. The almost transparent plexiglass panels reflect and transmit light to create a complexity of images. Evolving Multiverses plays with the nearly invisible panel of plexiglass viewed straight on but with enhanced visual interest in the glowing fluorescent edges.',
+        paragraphs: [
           'The advancement of the technology of telescopes and measuring instruments, using different wave lengths to highlight different components, has led to an explosion of information about what the cosmos contains. And what I find in the work I have been making lately is a representation of what I have been pondering: wormholes, multiverses, alternative realities, etc.',
         ],
       },
@@ -98,6 +108,7 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
       portfolioImage: 'GalleryViewFront.jpg',
       description: {
         title: 'My Modern Aesthetic',
+        medium: 'Mixed media — acrylic, plexiglass, projection',
         paragraphs: [],
       },
       images: [
@@ -117,10 +128,14 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
       portfolioName: 'PERSONAL PERCEPTIONS',
       portfolioImage: 'Personal Perceptions front.jpg',
       description: {
-        title: 'Personal Perceptions by Linda Graham',
+        title: 'Personal Perceptions',
+        venue: 'Hinterland',
+        year: 2014,
+        medium: 'Acrylic sheets, projected light, SketchUp animation',
+        artistStatement:
+          'An animated SketchUp generated video cast onto a bent sheet of yellow acrylic sheet creates the illusion of three dimensions and shows a change in the wave length when light travels across the curved surface. With the addition of green bent acrylic sheet panels in front, the mystery of light and color is enhanced. The interaction of these items creates a mysterious 3-D effect. The mind is free to experience a multitude of ideas.',
         paragraphs: [
           'The exhibit showing at Hinterland, November 13 - December 5, is an installation using acrylic sheets, projected light and a darkened space.',
-          'An animated SketchUp generated video cast onto a bent sheet of yellow acrylic sheet creates the illusion of three dimensions and shows a change in the wave length when light travels across the curved surface. With the addition of green bent acrylic sheet panels in front, the mystery of light and color is enhanced. The interaction of these items creates a mysterious 3-D effect. The mind is free to experience a multitude of ideas.',
         ],
       },
       images: [
@@ -147,8 +162,11 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
       portfolioImage: 'BinaryFront.jpg',
       description: {
         title: 'Binaries',
-        paragraphs: [
+        medium: 'Acrylic objects, sculptural installation',
+        collaborator: 'S. Fletcher Graham',
+        artistStatement:
           'Binaries is a sculptural collaboration by Linda Melvin Graham and S. Fletcher Graham exploring the paradox of human destruction and advancements. The work expresses the concerns about our current destructive treatment of the planet, and the hopes that advancements in many fields of science and technology will help us overcome many of these difficulties and understand more about ourselves and our place in the cosmos.',
+        paragraphs: [
           'This exhibit has three areas of focus, each representing some aspect of this paradox. The colors used in the abstract acrylic objects hanging overhead in the gallery change from somber blacks, blues and purples to more optimistic greens, reds and yellows, as the viewer moves from "Dystopia" representing the grim reality of our dystopian future, to "Resilience" an acrylic depiction of the geological timeline with the 5 previous extinctions plus the one we may be experiencing currently, to the back of the gallery where "Transition" represents a more hopeful future of Homo sapiens as we move toward an intergalactic experience and continue to adapt to the realities of a sustainable existence on the earth.',
         ],
       },
@@ -174,9 +192,10 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
       portfolioImage: 'dusk-300x200.jpg',
       description: {
         title: 'Early Works',
-        paragraphs: [
-          '"These pieces were collectively created over a period of 20 years of exploring the aesthetic, physical, and chemical properties of various types of clay. Some are in the personal collection of the artist."',
-        ],
+        medium: 'Ceramic — various types of clay',
+        artistStatement:
+          'These pieces were collectively created over a period of 20 years of exploring the aesthetic, physical, and chemical properties of various types of clay. Some are in the personal collection of the artist.',
+        paragraphs: [],
       },
       images: [
         { imageCaption: 'Ancient Warrior', imageSmall: 'AncientWarrior-162x162.jpg', imageLarge: 'AncientWarrior-388x500.jpg' },
@@ -205,9 +224,11 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
       portfolioImage: 'yummy-pink-garden1-300x200.jpg',
       description: {
         title: 'Later Works',
-        paragraphs: [
-          '"These pieces were collectively created over the period from 2007 to 2011."',
-        ],
+        year: 2011,
+        medium: 'Ceramic sculpture — clay',
+        artistStatement:
+          'These pieces were collectively created over the period from 2007 to 2011.',
+        paragraphs: [],
       },
       images: [
         { imageCaption: 'Close Up', imageSmall: 'CloseUp-162x162.jpg', imageLarge: 'CloseUp-501x500.jpg' },

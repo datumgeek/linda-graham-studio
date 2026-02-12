@@ -1,6 +1,13 @@
+import { SEO } from '../components/SEO';
+
 export function AboutPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 py-6 max-w-3xl">
+      <SEO
+        title="About"
+        description="Bio and contact information for artist Linda Graham — ceramics, plexiglass, light installations in Denver, CO."
+        path="/about"
+      />
       {/* Contact Section */}
       <section className="mb-10">
         <h1 className="text-3xl sm:text-4xl font-serif font-semibold mb-4">Contact</h1>

@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { PageSkeleton } from './components/PageSkeleton';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 const HomePage = lazy(() =>
   import('./pages/HomePage').then((m) => ({ default: m.HomePage })),
@@ -26,26 +27,32 @@ const PortfolioCarouselPage = lazy(() =>
 const AboutPage = lazy(() =>
   import('./pages/AboutPage').then((m) => ({ default: m.AboutPage })),
 );
+const NotFoundPage = lazy(() =>
+  import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
+);
 
 export function App() {
   return (
-    <Suspense fallback={<PageSkeleton />}>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/portfolio/:listName" element={<PortfolioListPage />} />
-          <Route
-            path="/portfolio/:listName/:portfolioKey"
-            element={<PortfolioLayout />}
-          >
-            <Route index element={<PortfolioHomePage />} />
-            <Route path="grid" element={<PortfolioGridPage />} />
-            <Route path="carousel/:slideIndex" element={<PortfolioCarouselPage />} />
+    <ErrorBoundary>
+      <Suspense fallback={<PageSkeleton />}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/portfolio/:listName" element={<PortfolioListPage />} />
+            <Route
+              path="/portfolio/:listName/:portfolioKey"
+              element={<PortfolioLayout />}
+            >
+              <Route index element={<PortfolioHomePage />} />
+              <Route path="grid" element={<PortfolioGridPage />} />
+              <Route path="carousel/:slideIndex" element={<PortfolioCarouselPage />} />
+            </Route>
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
-          <Route path="/about" element={<AboutPage />} />
-        </Route>
-      </Routes>
-    </Suspense>
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
   );
 }
 

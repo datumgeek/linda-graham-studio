@@ -4,6 +4,7 @@ import {
   type PortfolioListName,
 } from '../data/portfolio-data';
 import { PortfolioNav } from '../components/PortfolioNav';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export function PortfolioLayout() {
   const { listName, portfolioKey } = useParams<{
@@ -26,6 +27,7 @@ export function PortfolioLayout() {
 
   return (
     <div className="container mx-auto px-3 sm:px-6 py-4 sm:py-6">
+      <Breadcrumbs />
       <PortfolioNav />
       <Outlet context={{ portfolio, listName: listName as PortfolioListName }} />
     </div>

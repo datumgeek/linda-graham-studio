@@ -3,6 +3,7 @@ import { useEffect, useCallback, useState } from 'react';
 import { usePortfolioContext } from '../hooks/usePortfolioContext';
 import { getImageUrl } from '../data/portfolio-data';
 import { useSwipe } from '../hooks/useSwipe';
+import { Lightbox } from '../components/Lightbox';
 
 export function PortfolioCarouselPage() {
   const { slideIndex, listName: listNameParam, portfolioKey } = useParams<{
@@ -13,6 +14,7 @@ export function PortfolioCarouselPage() {
   const { portfolio, listName } = usePortfolioContext();
   const navigate = useNavigate();
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const currentIndex = parseInt(slideIndex || '0', 10);
   const total = portfolio.images.length;
@@ -41,8 +43,9 @@ export function PortfolioCarouselPage() {
     [goTo, currentIndex, total],
   );
 
-  // Keyboard navigation
+  // Keyboard navigation (only when lightbox is closed — lightbox handles its own)
   useEffect(() => {
+    if (lightboxOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
@@ -54,7 +57,7 @@ export function PortfolioCarouselPage() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [prev, next]);
+  }, [prev, next, lightboxOpen]);
 
   // Preload adjacent images
   useEffect(() => {
@@ -97,7 +100,7 @@ export function PortfolioCarouselPage() {
         style={{ minHeight: 'calc(100vh - 14rem)' }}
         {...swipeHandlers}
       >
-        {/* Prev button — larger touch target on mobile */}
+        {/* Prev button */}
         <button
           className="btn btn-circle btn-ghost absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-10
                      w-12 h-12 sm:w-10 sm:h-10 min-h-0"
@@ -126,13 +129,14 @@ export function PortfolioCarouselPage() {
             <img
               src={getImageUrl(listName, portfolio.portfolio, current.imageLarge!)}
               alt={caption}
-              className="max-h-[calc(100vh-16rem)] max-w-full object-contain"
+              className="max-h-[calc(100vh-16rem)] max-w-full object-contain cursor-zoom-in"
               draggable={false}
+              onClick={() => setLightboxOpen(true)}
             />
           )}
         </div>
 
-        {/* Next button — larger touch target on mobile */}
+        {/* Next button */}
         <button
           className="btn btn-circle btn-ghost absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-10
                      w-12 h-12 sm:w-10 sm:h-10 min-h-0"
@@ -176,10 +180,29 @@ export function PortfolioCarouselPage() {
         </div>
       </div>
 
-      {/* Keyboard hint — desktop only */}
+      {/* Keyboard hint */}
       <p className="hidden sm:block text-xs opacity-40 mt-2">
-        Use arrow keys to navigate
+        Use arrow keys to navigate &middot; Click image for fullscreen
       </p>
+
+      {/* Lightbox overlay */}
+      {!isVideo && (
+        <Lightbox
+          isOpen={lightboxOpen}
+          onClose={() => setLightboxOpen(false)}
+          onPrev={prev}
+          onNext={next}
+          caption={caption}
+          counter={`${currentIndex + 1} / ${total}`}
+        >
+          <img
+            src={getImageUrl(listName, portfolio.portfolio, current.imageLarge!)}
+            alt={caption}
+            className="max-h-[90vh] max-w-[95vw] object-contain select-none"
+            draggable={false}
+          />
+        </Lightbox>
+      )}
     </div>
   );
 }

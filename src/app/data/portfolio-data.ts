@@ -227,12 +227,14 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
   ],
 };
 
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 export function getImageUrl(
   listName: PortfolioListName,
   portfolioKey: string,
   filename: string,
 ): string {
-  return `/images/${listName}/${portfolioKey}/${filename}`;
+  return `${BASE}/images/${listName}/${portfolioKey}/${filename}`;
 }
 
 export function getPortfolioThumbUrl(
@@ -240,7 +242,7 @@ export function getPortfolioThumbUrl(
   portfolioKey: string,
   filename: string,
 ): string {
-  return `/images/${listName}/${portfolioKey}/${filename}`;
+  return `${BASE}/images/${listName}/${portfolioKey}/${filename}`;
 }
 
 export function findPortfolio(

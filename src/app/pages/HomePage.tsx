@@ -20,7 +20,7 @@ export function HomePage() {
         <div
           className="absolute inset-0 animate-ken-burns bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/images/IllusiveReality-1024x682.jpg)',
+            backgroundImage: `url(${import.meta.env.BASE_URL}images/IllusiveReality-1024x682.jpg)`,
           }}
         />
         <div className="hero-overlay bg-gradient-to-t from-base-100/90 via-black/40 to-black/20" />

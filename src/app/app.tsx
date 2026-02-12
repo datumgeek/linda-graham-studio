@@ -27,6 +27,9 @@ const PortfolioCarouselPage = lazy(() =>
 const AboutPage = lazy(() =>
   import('./pages/AboutPage').then((m) => ({ default: m.AboutPage })),
 );
+const TimelinePage = lazy(() =>
+  import('./pages/TimelinePage').then((m) => ({ default: m.TimelinePage })),
+);
 const NotFoundPage = lazy(() =>
   import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
 );
@@ -48,6 +51,7 @@ export function App() {
               <Route path="carousel/:slideIndex" element={<PortfolioCarouselPage />} />
             </Route>
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/timeline" element={<TimelinePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

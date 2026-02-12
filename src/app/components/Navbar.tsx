@@ -48,6 +48,11 @@ export function Navbar() {
                   About
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/timeline" onClick={closeMenu}>
+                  Timeline
+                </NavLink>
+              </li>
             </ul>
           )}
         </div>
@@ -73,6 +78,9 @@ export function Navbar() {
           </li>
           <li>
             <NavLink to="/about">About</NavLink>
+          </li>
+          <li>
+            <NavLink to="/timeline">Timeline</NavLink>
           </li>
         </ul>
       </div>

@@ -124,3 +124,64 @@ button, a, [role="button"] {
     animation: none;
   }
 }
+
+/* ── Print Styles ── */
+@media print {
+  /* Hide navigation, bottom bar, footer */
+  nav,
+  .btm-nav,
+  footer,
+  .btn,
+  [aria-label="Skip to content"] {
+    display: none !important;
+  }
+
+  /* Remove fixed positioning, shadows, backgrounds */
+  main {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  /* Ensure images print */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Typography for print */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    color: #000 !important;
+  }
+
+  /* Cards → simple blocks */
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  /* Grid → single column */
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  /* Show URL after links */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+  }
+}

@@ -2,9 +2,10 @@ import { usePortfolioContext } from '../hooks/usePortfolioContext';
 import { FadeIn } from '../components/FadeIn';
 import { SEO } from '../components/SEO';
 import { ArtworkStructuredData } from '../components/StructuredData';
+import { RelatedWorks } from '../components/RelatedWorks';
 
 export function PortfolioHomePage() {
-  const { portfolio } = usePortfolioContext();
+  const { portfolio, listName } = usePortfolioContext();
   const { description } = portfolio;
 
   const hasMeta = description.venue || description.location || description.year || description.medium || description.collaborator;
@@ -104,6 +105,12 @@ export function PortfolioHomePage() {
           {portfolio.images.length} work{portfolio.images.length !== 1 ? 's' : ''} in this collection
         </p>
       </FadeIn>
+
+      {/* Related works */}
+      <RelatedWorks
+        currentKey={portfolio.portfolio}
+        currentListName={listName}
+      />
     </div>
   );
 }

@@ -63,6 +63,7 @@ describe('portfolio-data', () => {
     });
 
     it('should return undefined for invalid list', () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       expect(findPortfolio('invalid' as any, 'naturalSelection')).toBeUndefined();
     });
   });

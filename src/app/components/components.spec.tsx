@@ -67,7 +67,7 @@ describe('FadeIn', () => {
 
 describe('ErrorBoundary', () => {
   // Suppress console.error for intentional error
-  const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+  const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { /* noop */ });
 
   function ThrowError() {
     throw new Error('Test error');

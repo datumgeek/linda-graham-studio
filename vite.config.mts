@@ -5,7 +5,10 @@ import tailwindcss from '@tailwindcss/vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
+const base = process.env.CI ? '/linda-graham-studio/' : '/';
+
 export default defineConfig(() => ({
+  base,
   root: import.meta.dirname,
   cacheDir: './node_modules/.vite/linda-graham-studio',
   server: {

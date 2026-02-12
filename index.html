@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Linda Graham Studio</title>
-    <base href="/" />
+    <!-- base href is set dynamically by Vite's base config -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Artist portfolio of Linda Graham — clay, plexiglass, light, and projection installations" />
@@ -23,6 +23,16 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // GitHub Pages SPA redirect handler
+      (function () {
+        var redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+          sessionStorage.removeItem('redirect');
+          window.history.replaceState(null, '', redirect);
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -5,6 +5,7 @@ import { getImageUrl } from '../data/portfolio-data';
 import { useSwipe } from '../hooks/useSwipe';
 import { Lightbox } from '../components/Lightbox';
 import { VideoEmbed } from '../components/VideoEmbed';
+import { ComparisonSlider } from '../components/ComparisonSlider';
 
 export function PortfolioCarouselPage() {
   const { slideIndex, listName: listNameParam, portfolioKey } = useParams<{
@@ -16,6 +17,7 @@ export function PortfolioCarouselPage() {
   const navigate = useNavigate();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [compareMode, setCompareMode] = useState(false);
 
   const currentIndex = parseInt(slideIndex || '0', 10);
   const total = portfolio.images.length;
@@ -75,6 +77,11 @@ export function PortfolioCarouselPage() {
     });
   }, [currentIndex, total, portfolio, listName]);
 
+  // Reset compare mode on slide change
+  useEffect(() => {
+    setCompareMode(false);
+  }, [currentIndex]);
+
   // Swipe gestures
   const swipeHandlers = useSwipe({
     onSwipeLeft: next,
@@ -92,10 +99,23 @@ export function PortfolioCarouselPage() {
 
   const isVideo = !!current.videoLarge;
   const caption = current.imageCaption || current.videoCaption || '';
+  const hasCompare = !isVideo && current.imageSmall && current.imageLarge;
 
   return (
     <div className="relative flex flex-col items-center select-none">
-      {/* Slide area */}
+      {/* Compare slider (replaces carousel when active) */}
+      {compareMode && hasCompare ? (
+        <div className="w-full max-w-3xl px-2">
+          <ComparisonSlider
+            leftSrc={getImageUrl(listName, portfolio.portfolio, current.imageSmall)}
+            rightSrc={getImageUrl(listName, portfolio.portfolio, current.imageLarge!)}
+            leftLabel="Thumbnail"
+            rightLabel="Full Detail"
+            alt={caption}
+            className="shadow-xl"
+          />
+        </div>
+      ) : (
       <div
         className="w-full bg-base-200 rounded-lg flex items-center justify-center relative overflow-hidden touch-pan-y"
         style={{ minHeight: 'calc(100vh - 14rem)' }}
@@ -148,6 +168,22 @@ export function PortfolioCarouselPage() {
           </svg>
         </button>
       </div>
+      )}
+
+      {/* Compare toggle button */}
+      {hasCompare && (
+        <button
+          onClick={() => setCompareMode((m) => !m)}
+          className={`btn btn-sm mt-2 gap-1 ${compareMode ? 'btn-primary' : 'btn-ghost'}`}
+          aria-label={compareMode ? 'Exit comparison view' : 'Compare thumbnail vs detail'}
+          title="Compare thumbnail vs full detail"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+          </svg>
+          {compareMode ? 'Back to Slideshow' : 'Compare Detail'}
+        </button>
+      )}
 
       {/* Caption, counter & thumbnail strip */}
       <div className="text-center mt-3 w-full px-2">

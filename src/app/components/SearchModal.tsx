@@ -13,6 +13,24 @@ interface SearchResult {
   portfolioName: string;
   thumbUrl: string;
   matchContext: string; // short snippet showing where match was found
+  medium?: string;
+  year?: number;
+}
+
+/** Extract unique mediums and years from all portfolios */
+function extractFilters() {
+  const mediums = new Set<string>();
+  const years = new Set<number>();
+  for (const listName of Object.keys(portfolios) as PortfolioListName[]) {
+    for (const p of portfolios[listName]) {
+      if (p.description.medium) mediums.add(p.description.medium);
+      if (p.description.year) years.add(p.description.year);
+    }
+  }
+  return {
+    mediums: Array.from(mediums).sort(),
+    years: Array.from(years).sort((a, b) => b - a),
+  };
 }
 
 function buildIndex(): SearchResult[] {
@@ -38,6 +56,8 @@ function buildIndex(): SearchResult[] {
         portfolioName: p.portfolioName,
         thumbUrl: getPortfolioThumbUrl(listName, p.portfolio, p.portfolioImage),
         matchContext: searchable,
+        medium: p.description.medium,
+        year: p.description.year,
       });
     }
   }
@@ -66,16 +86,37 @@ interface SearchModalProps {
 export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [query, setQuery] = useState('');
   const [selectedIdx, setSelectedIdx] = useState(0);
+  const [activeMedium, setActiveMedium] = useState<string | null>(null);
+  const [activeYear, setActiveYear] = useState<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   const index = useMemo(() => buildIndex(), []);
+  const filters = useMemo(() => extractFilters(), []);
+
+  const hasFilters = activeMedium !== null || activeYear !== null;
 
   const results = useMemo(() => {
-    if (!query.trim()) return [];
-    const q = query.toLowerCase().trim();
-    return index.filter((r) => r.matchContext.toLowerCase().includes(q));
-  }, [query, index]);
+    // Show results when there's either a query or active filters
+    if (!query.trim() && !hasFilters) return [];
+    let filtered = index;
+    if (query.trim()) {
+      const q = query.toLowerCase().trim();
+      filtered = filtered.filter((r) =>
+        r.matchContext.toLowerCase().includes(q),
+      );
+    }
+    if (activeMedium) {
+      filtered = filtered.filter(
+        (r) =>
+          r.medium?.toLowerCase().includes(activeMedium.toLowerCase()),
+      );
+    }
+    if (activeYear) {
+      filtered = filtered.filter((r) => r.year === activeYear);
+    }
+    return filtered;
+  }, [query, index, activeMedium, activeYear, hasFilters]);
 
   // Reset selection when results change
   useEffect(() => {
@@ -87,6 +128,8 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     if (isOpen) {
       setQuery('');
       setSelectedIdx(0);
+      setActiveMedium(null);
+      setActiveYear(null);
       // small delay to allow modal animation
       setTimeout(() => inputRef.current?.focus(), 50);
     }
@@ -179,11 +222,63 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
           <kbd className="kbd kbd-xs opacity-40 hidden sm:inline">Esc</kbd>
         </div>
 
+        {/* Filter chips */}
+        <div className="flex flex-wrap items-center gap-2 px-4 py-2 border-b border-base-300 text-xs">
+          <span className="opacity-50 font-medium">Filters:</span>
+          {/* Medium chips */}
+          {filters.mediums.map((m) => {
+            const short = m.length > 20 ? m.slice(0, 20) + '...' : m;
+            return (
+              <button
+                key={m}
+                className={`badge badge-sm cursor-pointer transition-colors ${
+                  activeMedium === m
+                    ? 'badge-primary'
+                    : 'badge-outline opacity-60 hover:opacity-100'
+                }`}
+                onClick={() =>
+                  setActiveMedium((prev) => (prev === m ? null : m))
+                }
+                title={m}
+              >
+                {short}
+              </button>
+            );
+          })}
+          {/* Year chips */}
+          {filters.years.map((y) => (
+            <button
+              key={y}
+              className={`badge badge-sm cursor-pointer transition-colors ${
+                activeYear === y
+                  ? 'badge-secondary'
+                  : 'badge-outline opacity-60 hover:opacity-100'
+              }`}
+              onClick={() =>
+                setActiveYear((prev) => (prev === y ? null : y))
+              }
+            >
+              {y}
+            </button>
+          ))}
+          {hasFilters && (
+            <button
+              className="badge badge-sm badge-ghost opacity-60 hover:opacity-100 cursor-pointer"
+              onClick={() => {
+                setActiveMedium(null);
+                setActiveYear(null);
+              }}
+            >
+              Clear all
+            </button>
+          )}
+        </div>
+
         {/* Results */}
         <div className="max-h-[50vh] overflow-y-auto">
-          {query.trim() && results.length === 0 && (
+          {(query.trim() || hasFilters) && results.length === 0 && (
             <div className="px-4 py-8 text-center opacity-50 text-sm">
-              No results for "{query}"
+              No results{query.trim() ? ` for "${query}"` : ''}{hasFilters ? ' with selected filters' : ''}
             </div>
           )}
           {results.map((r, i) => (
@@ -205,6 +300,8 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 </div>
                 <div className="text-xs opacity-50 truncate">
                   {portfolioListLabels[r.listName]}
+                  {r.year && <> &middot; {r.year}</>}
+                  {r.medium && <> &middot; {r.medium.length > 25 ? r.medium.slice(0, 25) + '...' : r.medium}</>}
                   {r.matchContext && query.trim() && (
                     <> &middot; {highlightMatch(r.matchContext, query.trim())}</>
                   )}
@@ -229,7 +326,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         </div>
 
         {/* Footer hint */}
-        {!query.trim() && (
+        {!query.trim() && !hasFilters && (
           <div className="px-4 py-3 border-t border-base-300 text-xs opacity-40 flex items-center gap-4">
             <span>
               <kbd className="kbd kbd-xs">↑↓</kbd> Navigate

@@ -100,11 +100,23 @@ export function PortfolioHomePage() {
         </FadeIn>
       )}
 
-      {/* Image count badge */}
+      {/* Image count badge & Print button */}
       <FadeIn delay={350}>
-        <p className="mt-6 text-xs opacity-50">
-          {portfolio.images.length} work{portfolio.images.length !== 1 ? 's' : ''} in this collection
-        </p>
+        <div className="mt-6 flex items-center gap-4">
+          <p className="text-xs opacity-50">
+            {portfolio.images.length} work{portfolio.images.length !== 1 ? 's' : ''} in this collection
+          </p>
+          <button
+            className="btn btn-ghost btn-xs gap-1 opacity-60 hover:opacity-100 print:hidden"
+            onClick={() => window.print()}
+            aria-label="Print this portfolio"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            Print
+          </button>
+        </div>
       </FadeIn>
 
       {/* Color palette */}

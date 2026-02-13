@@ -30,6 +30,9 @@ const AboutPage = lazy(() =>
 const TimelinePage = lazy(() =>
   import('./pages/TimelinePage').then((m) => ({ default: m.TimelinePage })),
 );
+const MapPage = lazy(() =>
+  import('./pages/MapPage').then((m) => ({ default: m.MapPage })),
+);
 const NotFoundPage = lazy(() =>
   import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
 );
@@ -52,6 +55,7 @@ export function App() {
             </Route>
             <Route path="/about" element={<AboutPage />} />
             <Route path="/timeline" element={<TimelinePage />} />
+            <Route path="/map" element={<MapPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

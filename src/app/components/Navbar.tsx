@@ -59,6 +59,11 @@ export function Navbar({ onSearchOpen }: NavbarProps) {
                   Timeline
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/map" onClick={closeMenu}>
+                  Map
+                </NavLink>
+              </li>
             </ul>
           )}
         </div>
@@ -87,6 +92,9 @@ export function Navbar({ onSearchOpen }: NavbarProps) {
           </li>
           <li>
             <NavLink to="/timeline">Timeline</NavLink>
+          </li>
+          <li>
+            <NavLink to="/map">Map</NavLink>
           </li>
         </ul>
       </div>

@@ -12,10 +12,12 @@
     "includedScripts": []
   },
   "dependencies": {
+    "framer-motion": "^12.34.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-helmet-async": "^2.0.5",
-    "react-router-dom": "^6.30.3"
+    "react-router-dom": "^6.30.3",
+    "react-zoom-pan-pinch": "^3.7.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",

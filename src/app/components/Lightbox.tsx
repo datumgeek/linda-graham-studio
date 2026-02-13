@@ -1,4 +1,5 @@
 import { useEffect, useCallback, useState, type ReactNode } from 'react';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { useSwipe } from '../hooks/useSwipe';
 
 interface LightboxProps {
@@ -117,7 +118,22 @@ export function Lightbox({
         onClick={(e) => e.stopPropagation()}
         {...swipeHandlers}
       >
-        {children}
+        <TransformWrapper
+          initialScale={1}
+          minScale={1}
+          maxScale={5}
+          centerOnInit
+          doubleClick={{ mode: 'toggle', step: 2 }}
+          panning={{ velocityDisabled: true }}
+          wheel={{ step: 0.3 }}
+        >
+          <TransformComponent
+            wrapperStyle={{ width: '100%', height: '100%' }}
+            contentStyle={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          >
+            {children}
+          </TransformComponent>
+        </TransformWrapper>
       </div>
 
       {/* Next */}

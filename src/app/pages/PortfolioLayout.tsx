@@ -1,4 +1,5 @@
-import { Outlet, useParams } from 'react-router-dom';
+import { useParams, useOutlet, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   findPortfolio,
   type PortfolioListName,
@@ -11,11 +12,14 @@ export function PortfolioLayout() {
     listName: string;
     portfolioKey: string;
   }>();
+  const location = useLocation();
 
   const portfolio = findPortfolio(
     listName as PortfolioListName,
     portfolioKey!,
   );
+
+  const outlet = useOutlet({ portfolio, listName: listName as PortfolioListName });
 
   if (!portfolio) {
     return (
@@ -29,7 +33,17 @@ export function PortfolioLayout() {
     <div className="container mx-auto px-3 sm:px-6 py-4 sm:py-6">
       <Breadcrumbs />
       <PortfolioNav />
-      <Outlet context={{ portfolio, listName: listName as PortfolioListName }} />
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={location.pathname}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
+        >
+          {outlet}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }

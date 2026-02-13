@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Outlet } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { BottomNav } from './BottomNav';
 import { Footer } from './Footer';
 import { StructuredData } from './StructuredData';
 import { SearchModal } from './SearchModal';
+import { AnimatedOutlet } from './AnimatedOutlet';
 import { useRouteA11y } from '../hooks/useRouteA11y';
 
 export function Layout() {
@@ -39,7 +39,7 @@ export function Layout() {
       </a>
       <Navbar onSearchOpen={openSearch} />
       <main id="main-content" className="flex-1 pt-16 pb-16 lg:pb-0">
-        <Outlet />
+        <AnimatedOutlet />
       </main>
       <Footer />
       <BottomNav />

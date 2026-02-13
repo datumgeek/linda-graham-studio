@@ -24,6 +24,8 @@ export interface PortfolioDescription {
   curatorNote?: { text: string; author: string };
   collaborator?: string;
   paragraphs: string[];
+  /** Curated color palette extracted from representative artwork */
+  palette?: string[];
 }
 
 export type PortfolioListName = 'exhibitions' | 'workingWithClay';
@@ -47,6 +49,7 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
         medium: 'Clay sculpture',
         artistStatement:
           'The spiral forms bring to mind the morning glory vines, swirling galaxies, hurricanes seen from outer space, molecular structures, and most growing thing that bend and sway in the forest, from the smallest to the largest elements of this world. They are products of my mind, composites of lots of looking at hairy, feathery plants the grow in streams, pods that fall at the end of the growing season, geometric solids and geological layering of many western landscapes.',
+        palette: ['#5E7944', '#C9A96E', '#D4736C', '#8B6F4E', '#E8DDD0'],
         paragraphs: [],
       },
       images: [
@@ -71,6 +74,7 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
           text: "Linda Graham's work has shifted from a focus on sculptural clay work to new media installations that take on a host of materials from projection to plexiglass. These media installations engage with concepts of the microcosm to the macrocosm, from cellular structure to interstellar elements. Multiverse 3 is a projection piece that radically transforms the Rude Gallery into an ungrounded interface, redrafting the room's environments features.",
           author: 'Cortney Stell',
         },
+        palette: ['#1B1464', '#6C3FA0', '#D4AF37', '#0D1B2A', '#E0E0E0'],
         paragraphs: [],
       },
       images: [
@@ -90,6 +94,7 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
         medium: 'Plexiglass, ultraviolet light, fluorescent materials',
         artistStatement:
           'The pieces of Electromagnetic Transformations explore the fascinating properties of plexiglass when exposed to various light wave lengths. In Multiverse 3, a projection cast onto a bent sheet of yellow plexiglass creates the illusion of three dimensions and shows a change in the wave length when light travels across the curved surface. In Illusive Reality, the fluorescent edges are highlighted when exposed to ultraviolet light that can\'t be seen until the wave length is reduced to the visible range when a photon is released. The almost transparent plexiglass panels reflect and transmit light to create a complexity of images. Evolving Multiverses plays with the nearly invisible panel of plexiglass viewed straight on but with enhanced visual interest in the glowing fluorescent edges.',
+        palette: ['#00CED1', '#FF6EC7', '#1A1A2E', '#9B59B6', '#F0E68C'],
         paragraphs: [
           'The advancement of the technology of telescopes and measuring instruments, using different wave lengths to highlight different components, has led to an explosion of information about what the cosmos contains. And what I find in the work I have been making lately is a representation of what I have been pondering: wormholes, multiverses, alternative realities, etc.',
         ],
@@ -109,6 +114,7 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
       description: {
         title: 'My Modern Aesthetic',
         medium: 'Mixed media — acrylic, plexiglass, projection',
+        palette: ['#2C3E50', '#E74C3C', '#ECF0F1', '#3498DB', '#F39C12'],
         paragraphs: [],
       },
       images: [
@@ -134,6 +140,7 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
         medium: 'Acrylic sheets, projected light, SketchUp animation',
         artistStatement:
           'An animated SketchUp generated video cast onto a bent sheet of yellow acrylic sheet creates the illusion of three dimensions and shows a change in the wave length when light travels across the curved surface. With the addition of green bent acrylic sheet panels in front, the mystery of light and color is enhanced. The interaction of these items creates a mysterious 3-D effect. The mind is free to experience a multitude of ideas.',
+        palette: ['#2ECC71', '#F1C40F', '#8E44AD', '#1ABC9C', '#34495E'],
         paragraphs: [
           'The exhibit showing at Hinterland, November 13 - December 5, is an installation using acrylic sheets, projected light and a darkened space.',
         ],
@@ -166,6 +173,7 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
         collaborator: 'S. Fletcher Graham',
         artistStatement:
           'Binaries is a sculptural collaboration by Linda Melvin Graham and S. Fletcher Graham exploring the paradox of human destruction and advancements. The work expresses the concerns about our current destructive treatment of the planet, and the hopes that advancements in many fields of science and technology will help us overcome many of these difficulties and understand more about ourselves and our place in the cosmos.',
+        palette: ['#0D0D0D', '#4A0E4E', '#2ECC71', '#E74C3C', '#F5F5DC'],
         paragraphs: [
           'This exhibit has three areas of focus, each representing some aspect of this paradox. The colors used in the abstract acrylic objects hanging overhead in the gallery change from somber blacks, blues and purples to more optimistic greens, reds and yellows, as the viewer moves from "Dystopia" representing the grim reality of our dystopian future, to "Resilience" an acrylic depiction of the geological timeline with the 5 previous extinctions plus the one we may be experiencing currently, to the back of the gallery where "Transition" represents a more hopeful future of Homo sapiens as we move toward an intergalactic experience and continue to adapt to the realities of a sustainable existence on the earth.',
         ],
@@ -195,6 +203,7 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
         medium: 'Ceramic — various types of clay',
         artistStatement:
           'These pieces were collectively created over a period of 20 years of exploring the aesthetic, physical, and chemical properties of various types of clay. Some are in the personal collection of the artist.',
+        palette: ['#8B4513', '#CD853F', '#D2691E', '#F5DEB3', '#6B3A2A'],
         paragraphs: [],
       },
       images: [
@@ -228,6 +237,7 @@ export const portfolios: Record<PortfolioListName, Portfolio[]> = {
         medium: 'Ceramic sculpture — clay',
         artistStatement:
           'These pieces were collectively created over the period from 2007 to 2011.',
+        palette: ['#C0392B', '#E8B4B8', '#6B8E23', '#DAA520', '#F0EDE5'],
         paragraphs: [],
       },
       images: [

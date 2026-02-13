@@ -119,8 +119,49 @@ button, a, [role="button"] {
   animation: ken-burns 25s ease-in-out infinite;
 }
 
+/* ── Ambient mesh gradient for hero ── */
+@keyframes ambient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
+}
+
+.ambient-gradient {
+  background: linear-gradient(
+    -45deg,
+    oklch(0.55 0.12 45 / 0.15),
+    oklch(0.45 0.06 250 / 0.12),
+    oklch(0.65 0.10 85 / 0.15),
+    oklch(0.50 0.08 280 / 0.10)
+  );
+  background-size: 400% 400%;
+  animation: ambient-shift 20s ease infinite;
+}
+
+/* ── Search modal entrance ── */
+@keyframes search-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-ken-burns {
+  .animate-ken-burns,
+  .ambient-gradient {
     animation: none;
   }
 }

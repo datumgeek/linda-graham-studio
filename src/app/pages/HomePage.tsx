@@ -25,6 +25,8 @@ export function HomePage() {
             backgroundImage: `url(${import.meta.env.BASE_URL}images/IllusiveReality-1024x682.jpg)`,
           }}
         />
+        {/* Ambient mesh gradient overlay */}
+        <div className="absolute inset-0 ambient-gradient mix-blend-overlay pointer-events-none" />
         <div className="hero-overlay bg-gradient-to-t from-base-100/90 via-black/40 to-black/20" />
         <div className="hero-content text-center text-neutral-content relative z-10">
           <div className="max-w-lg">

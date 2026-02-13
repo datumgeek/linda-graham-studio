@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://datumgeek.github.io/linda-graham-studio/sitemap.xml

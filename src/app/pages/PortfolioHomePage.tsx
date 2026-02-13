@@ -3,6 +3,7 @@ import { FadeIn } from '../components/FadeIn';
 import { SEO } from '../components/SEO';
 import { ArtworkStructuredData } from '../components/StructuredData';
 import { RelatedWorks } from '../components/RelatedWorks';
+import { ColorPalette } from '../components/ColorPalette';
 
 export function PortfolioHomePage() {
   const { portfolio, listName } = usePortfolioContext();
@@ -105,6 +106,13 @@ export function PortfolioHomePage() {
           {portfolio.images.length} work{portfolio.images.length !== 1 ? 's' : ''} in this collection
         </p>
       </FadeIn>
+
+      {/* Color palette */}
+      {description.palette && description.palette.length > 0 && (
+        <FadeIn delay={400}>
+          <ColorPalette colors={description.palette} className="mt-4" />
+        </FadeIn>
+      )}
 
       {/* Related works */}
       <RelatedWorks

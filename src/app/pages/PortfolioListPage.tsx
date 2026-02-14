@@ -4,6 +4,7 @@ import {
   portfolioListLabels,
   type PortfolioListName,
   getPortfolioThumbUrl,
+  toWebp,
 } from '../data/portfolio-data';
 import { FadeIn } from '../components/FadeIn';
 import { ProgressiveImage } from '../components/ProgressiveImage';
@@ -44,6 +45,11 @@ export function PortfolioListPage() {
                     listName as PortfolioListName,
                     portfolio.portfolio,
                     portfolio.portfolioImage,
+                  )}
+                  webpSrc={getPortfolioThumbUrl(
+                    listName as PortfolioListName,
+                    portfolio.portfolio,
+                    toWebp(portfolio.portfolioImage),
                   )}
                   alt={portfolio.portfolioName}
                   className="w-full h-44 sm:h-48 object-cover transition-transform duration-300

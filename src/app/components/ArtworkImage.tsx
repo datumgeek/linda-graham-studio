@@ -3,6 +3,10 @@ import { useState, type ImgHTMLAttributes } from 'react';
 interface ArtworkImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   /** Fallback element shown when image fails to load */
   fallbackClassName?: string;
+  /** WebP variant of src for modern browsers */
+  webpSrc?: string;
+  /** Responsive srcset (WebP widths) */
+  webpSrcSet?: string;
 }
 
 /**
@@ -13,6 +17,8 @@ export function ArtworkImage({
   alt,
   fallbackClassName,
   className,
+  webpSrc,
+  webpSrcSet,
   ...props
 }: ArtworkImageProps) {
   const [hasError, setHasError] = useState(false);
@@ -40,6 +46,23 @@ export function ArtworkImage({
         </svg>
         <span className="text-xs opacity-50">Image unavailable</span>
       </div>
+    );
+  }
+
+  if (webpSrc || webpSrcSet) {
+    return (
+      <picture>
+        <source
+          srcSet={webpSrcSet || webpSrc}
+          type="image/webp"
+        />
+        <img
+          alt={alt}
+          className={className}
+          onError={() => setHasError(true)}
+          {...props}
+        />
+      </picture>
     );
   }
 

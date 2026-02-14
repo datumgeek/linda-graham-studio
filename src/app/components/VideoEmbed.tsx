@@ -1,17 +1,32 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 interface VideoEmbedProps {
   src: string;
   title: string;
   className?: string;
+  /** Poster/thumbnail image shown before the video loads */
+  posterSrc?: string;
 }
 
 /**
- * Graceful video embed — shows the iframe but handles load errors
- * with a fallback message. JWPlatform embeds may be defunct.
+ * Lazy video embed — shows a lightweight poster facade that loads
+ * the actual iframe only when the user clicks play.
+ *
+ * Benefits:
+ * - Zero iframe overhead until user interacts
+ * - Works with JWPlatform, YouTube, Vimeo, or any embeddable URL
+ * - Falls back gracefully if embed fails
  */
-export function VideoEmbed({ src, title, className = '' }: VideoEmbedProps) {
+export function VideoEmbed({ src, title, className = '', posterSrc }: VideoEmbedProps) {
+  const [activated, setActivated] = useState(false);
   const [error, setError] = useState(false);
+
+  // Upgrade http → https when possible
+  const secureSrc = src.replace(/^http:\/\//, 'https://');
+
+  const handleActivate = useCallback(() => {
+    setActivated(true);
+  }, []);
 
   if (error) {
     return (
@@ -38,14 +53,60 @@ export function VideoEmbed({ src, title, className = '' }: VideoEmbedProps) {
     );
   }
 
+  if (!activated) {
+    return (
+      <button
+        onClick={handleActivate}
+        className={`group relative bg-base-200 rounded-lg overflow-hidden cursor-pointer ${className}`}
+        aria-label={`Play video: ${title}`}
+      >
+        {/* Poster image or gradient placeholder */}
+        {posterSrc ? (
+          <img
+            src={posterSrc}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-base-300 to-base-200" />
+        )}
+
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
+
+        {/* Play button */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <div
+            className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/90 group-hover:bg-primary
+                        flex items-center justify-center shadow-lg
+                        transition-transform duration-200 group-hover:scale-110"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8 sm:h-10 sm:w-10 text-primary-content ml-1"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <p className="mt-3 text-sm font-medium text-white/90 drop-shadow-lg">
+            {title}
+          </p>
+        </div>
+      </button>
+    );
+  }
+
   return (
     <iframe
-      src={src}
+      src={secureSrc}
       title={title}
       className={`rounded-lg ${className}`}
       allowFullScreen
       onError={() => setError(true)}
-      loading="lazy"
+      allow="autoplay; encrypted-media"
     />
   );
 }

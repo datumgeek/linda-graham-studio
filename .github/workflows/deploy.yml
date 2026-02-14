@@ -27,6 +27,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Optimize images
+        run: node scripts/optimize-images.mjs
+
       - run: npx nx build
         env:
           CI: true

@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { usePortfolioContext } from '../hooks/usePortfolioContext';
-import { getImageUrl } from '../data/portfolio-data';
+import { getImageUrl, toWebp } from '../data/portfolio-data';
 import { FadeIn } from '../components/FadeIn';
 import { ProgressiveImage } from '../components/ProgressiveImage';
 
@@ -23,6 +23,7 @@ export function PortfolioGridPage() {
                 <figure className="p-1 sm:p-2 relative overflow-hidden">
                   <ProgressiveImage
                     src={getImageUrl(listName, portfolio.portfolio, img.imageSmall)}
+                    webpSrc={getImageUrl(listName, portfolio.portfolio, toWebp(img.imageSmall))}
                     alt={img.imageCaption || img.videoCaption || ''}
                     className="rounded-lg w-full object-cover
                                transition-transform duration-300 group-hover:scale-105"

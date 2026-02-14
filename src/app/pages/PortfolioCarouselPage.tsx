@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useCallback, useState, useRef } from 'react';
 import { usePortfolioContext } from '../hooks/usePortfolioContext';
-import { getImageUrl } from '../data/portfolio-data';
+import { getImageUrl, toWebp, getResponsiveSrcSet } from '../data/portfolio-data';
 import { useSwipe } from '../hooks/useSwipe';
 import { Lightbox } from '../components/Lightbox';
 import { VideoEmbed } from '../components/VideoEmbed';
@@ -190,11 +190,14 @@ export function PortfolioCarouselPage() {
             <VideoEmbed
               src={current.videoLarge!}
               title={caption}
+              posterSrc={getImageUrl(listName, portfolio.portfolio, current.imageSmall)}
               className="w-full max-w-3xl aspect-video"
             />
           ) : (
             <ArtworkImage
               src={getImageUrl(listName, portfolio.portfolio, current.imageLarge!)}
+              webpSrc={getImageUrl(listName, portfolio.portfolio, toWebp(current.imageLarge!))}
+              webpSrcSet={getResponsiveSrcSet(listName, portfolio.portfolio, current.imageLarge!)}
               alt={caption}
               className="max-h-[calc(100vh-16rem)] max-w-full object-contain cursor-zoom-in"
               fallbackClassName="w-64 h-48"
@@ -314,12 +317,18 @@ export function PortfolioCarouselPage() {
               }`}
               aria-label={`Go to slide ${i + 1}`}
             >
-              <img
-                src={getImageUrl(listName, portfolio.portfolio, img.imageSmall)}
-                alt={img.imageCaption || img.videoCaption || ''}
-                className="w-12 h-12 sm:w-14 sm:h-14 object-cover"
-                loading="lazy"
-              />
+              <picture>
+                <source
+                  srcSet={getImageUrl(listName, portfolio.portfolio, toWebp(img.imageSmall))}
+                  type="image/webp"
+                />
+                <img
+                  src={getImageUrl(listName, portfolio.portfolio, img.imageSmall)}
+                  alt={img.imageCaption || img.videoCaption || ''}
+                  className="w-12 h-12 sm:w-14 sm:h-14 object-cover"
+                  loading="lazy"
+                />
+              </picture>
             </button>
           ))}
         </div>
@@ -340,12 +349,19 @@ export function PortfolioCarouselPage() {
           caption={caption}
           counter={`${currentIndex + 1} / ${total}`}
         >
-          <img
-            src={getImageUrl(listName, portfolio.portfolio, current.imageLarge!)}
-            alt={caption}
-            className="max-h-[90vh] max-w-[95vw] object-contain select-none"
-            draggable={false}
-          />
+          <picture>
+            <source
+              srcSet={getResponsiveSrcSet(listName, portfolio.portfolio, current.imageLarge!)}
+              type="image/webp"
+              sizes="95vw"
+            />
+            <img
+              src={getImageUrl(listName, portfolio.portfolio, current.imageLarge!)}
+              alt={caption}
+              className="max-h-[90vh] max-w-[95vw] object-contain select-none"
+              draggable={false}
+            />
+          </picture>
         </Lightbox>
       )}
     </div>

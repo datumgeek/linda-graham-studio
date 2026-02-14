@@ -3,11 +3,14 @@ import { useState, type ImgHTMLAttributes } from 'react';
 interface ProgressiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   /** Low-quality placeholder or thumbnail src */
   placeholderSrc?: string;
+  /** WebP variant of src for modern browsers */
+  webpSrc?: string;
 }
 
 export function ProgressiveImage({
   src,
   placeholderSrc,
+  webpSrc,
   alt,
   className = '',
   ...props
@@ -48,18 +51,35 @@ export function ProgressiveImage({
         <div className="absolute inset-0 bg-base-300 animate-pulse" />
       )}
 
-      {/* Full image */}
-      <img
-        src={src}
-        alt={alt}
-        className={`w-full h-full object-cover transition-opacity duration-500 ${
-          loaded ? 'opacity-100' : 'opacity-0'
-        }`}
-        onLoad={() => setLoaded(true)}
-        onError={() => setError(true)}
-        loading="lazy"
-        {...props}
-      />
+      {/* Full image — wrapped in <picture> for WebP when available */}
+      {webpSrc ? (
+        <picture>
+          <source srcSet={webpSrc} type="image/webp" />
+          <img
+            src={src}
+            alt={alt}
+            className={`w-full h-full object-cover transition-opacity duration-500 ${
+              loaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            onLoad={() => setLoaded(true)}
+            onError={() => setError(true)}
+            loading="lazy"
+            {...props}
+          />
+        </picture>
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          className={`w-full h-full object-cover transition-opacity duration-500 ${
+            loaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          onLoad={() => setLoaded(true)}
+          onError={() => setError(true)}
+          loading="lazy"
+          {...props}
+        />
+      )}
     </div>
   );
 }

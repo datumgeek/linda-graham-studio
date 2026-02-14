@@ -6,6 +6,7 @@ import { useSwipe } from '../hooks/useSwipe';
 import { Lightbox } from '../components/Lightbox';
 import { VideoEmbed } from '../components/VideoEmbed';
 import { ComparisonSlider } from '../components/ComparisonSlider';
+import { ArtworkImage } from '../components/ArtworkImage';
 
 export function PortfolioCarouselPage() {
   const { slideIndex, listName: listNameParam, portfolioKey } = useParams<{
@@ -192,10 +193,11 @@ export function PortfolioCarouselPage() {
               className="w-full max-w-3xl aspect-video"
             />
           ) : (
-            <img
+            <ArtworkImage
               src={getImageUrl(listName, portfolio.portfolio, current.imageLarge!)}
               alt={caption}
               className="max-h-[calc(100vh-16rem)] max-w-full object-contain cursor-zoom-in"
+              fallbackClassName="w-64 h-48"
               draggable={false}
               onClick={() => setLightboxOpen(true)}
             />

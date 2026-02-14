@@ -1,16 +1,20 @@
 import { useState, type ImgHTMLAttributes } from 'react';
+import { BlurhashCanvas } from './BlurhashCanvas';
 
 interface ProgressiveImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   /** Low-quality placeholder or thumbnail src */
   placeholderSrc?: string;
   /** WebP variant of src for modern browsers */
   webpSrc?: string;
+  /** Blurhash placeholder string */
+  blurhash?: string;
 }
 
 export function ProgressiveImage({
   src,
   placeholderSrc,
   webpSrc,
+  blurhash,
   alt,
   className = '',
   ...props
@@ -36,8 +40,15 @@ export function ProgressiveImage({
 
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      {/* Blurred placeholder */}
-      {placeholderSrc && !loaded && (
+      {/* Blurhash placeholder — highest priority */}
+      {blurhash && !loaded && (
+        <div className="absolute inset-0">
+          <BlurhashCanvas hash={blurhash} />
+        </div>
+      )}
+
+      {/* Blurred image placeholder — fallback when no blurhash */}
+      {!blurhash && placeholderSrc && !loaded && (
         <img
           src={placeholderSrc}
           alt=""
@@ -46,8 +57,8 @@ export function ProgressiveImage({
         />
       )}
 
-      {/* Skeleton while loading */}
-      {!loaded && !placeholderSrc && (
+      {/* Skeleton while loading — last resort */}
+      {!loaded && !blurhash && !placeholderSrc && (
         <div className="absolute inset-0 bg-base-300 animate-pulse" />
       )}
 

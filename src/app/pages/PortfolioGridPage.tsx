@@ -24,6 +24,7 @@ export function PortfolioGridPage() {
                   <ProgressiveImage
                     src={getImageUrl(listName, portfolio.portfolio, img.imageSmall)}
                     webpSrc={getImageUrl(listName, portfolio.portfolio, toWebp(img.imageSmall))}
+                    blurhash={img.blurhash}
                     alt={img.imageCaption || img.videoCaption || ''}
                     className="rounded-lg w-full object-cover
                                transition-transform duration-300 group-hover:scale-105"

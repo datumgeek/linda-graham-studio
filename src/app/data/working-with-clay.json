@@ -7,29 +7,126 @@
       "title": "Early Works",
       "medium": "Ceramic — various types of clay",
       "artistStatement": "These pieces were collectively created over a period of 20 years of exploring the aesthetic, physical, and chemical properties of various types of clay. Some are in the personal collection of the artist.",
-      "palette": ["#8B4513", "#CD853F", "#D2691E", "#F5DEB3", "#6B3A2A"],
+      "palette": [
+        "#585858",
+        "#676976",
+        "#BCBCBC",
+        "#D5D5D5",
+        "#EEEEEE"
+      ],
       "paragraphs": []
     },
     "images": [
-      { "imageCaption": "Ancient Warrior", "imageSmall": "AncientWarrior-162x162.jpg", "imageLarge": "AncientWarrior-388x500.jpg" },
-      { "imageCaption": "Cylinders", "imageSmall": "Cylinders-162x162.jpg", "imageLarge": "Cylinders-344x500.jpg" },
-      { "imageCaption": "Dusk", "imageSmall": "dusk-162x162.jpg", "imageLarge": "dusk-621x500.jpg" },
-      { "imageCaption": "Egyption Teapot", "imageSmall": "EgyptionTeapot-162x162.jpg", "imageLarge": "EgyptionTeapot-307x500.jpg" },
-      { "imageCaption": "Low Bowl", "imageSmall": "lowBowl-162x162.jpg", "imageLarge": "lowBowl-641x500.jpg" },
-      { "imageCaption": "Mike Horn", "imageSmall": "MikesHorn-162x162.jpg", "imageLarge": "MikesHorn-500x500.jpg" },
-      { "imageCaption": "Mini Tea Pot", "imageSmall": "MiniTeaPot-162x162.jpg", "imageLarge": "MiniTeaPot-364x500.jpg" },
-      { "imageCaption": "P7034994", "imageSmall": "P7034994-162x162.jpg", "imageLarge": "P7034994-375x500.jpg" },
-      { "imageCaption": "Planes and Angels Motion", "imageSmall": "Planes-and-Angels-Motion-162x162.jpg", "imageLarge": "Planes-and-Angels-Motion-397x500.jpg" },
-      { "imageCaption": "Planes Angle 4", "imageSmall": "PlanesAngle4-162x162.jpg", "imageLarge": "PlanesAngle4-616x500.jpg" },
-      { "imageCaption": "Red Horn", "imageSmall": "RedHorn-162x162.jpg", "imageLarge": "RedHorn-224x500.jpg" },
-      { "imageCaption": "Segmented", "imageSmall": "Segmented-162x162.jpg", "imageLarge": "Segmented-510x500.jpg" },
-      { "imageCaption": "Tall Bowl", "imageSmall": "tallBowl-162x162.jpg", "imageLarge": "tallBowl-650x500.jpg" },
-      { "imageCaption": "Tall Short", "imageSmall": "TallShort-162x162.jpg", "imageLarge": "TallShort-379x500.jpg" },
-      { "imageCaption": "Three Bowls", "imageSmall": "ThreeBowls-162x162.jpg", "imageLarge": "ThreeBowls-606x500.jpg" },
-      { "imageCaption": "Top 6", "imageSmall": "Top-6-162x162.jpg", "imageLarge": "Top-6-396x500.jpg" },
-      { "imageCaption": "Top 9", "imageSmall": "Top-9-162x162.jpg", "imageLarge": "Top-9-395x500.jpg" },
-      { "imageCaption": "Top 10", "imageSmall": "Top-10-162x162.jpg", "imageLarge": "Top-10-630x500.jpg" }
-    ]
+      {
+        "imageCaption": "Ancient Warrior",
+        "imageSmall": "AncientWarrior-162x162.jpg",
+        "imageLarge": "AncientWarrior-388x500.jpg",
+        "blurhash": "LdJ[I,?b~q%M%MWBM{ayxuj[RjRj"
+      },
+      {
+        "imageCaption": "Cylinders",
+        "imageSmall": "Cylinders-162x162.jpg",
+        "imageLarge": "Cylinders-344x500.jpg",
+        "blurhash": "LdJkfqaf~qRj_3ofofWBt7ofRjWB"
+      },
+      {
+        "imageCaption": "Dusk",
+        "imageSmall": "dusk-162x162.jpg",
+        "imageLarge": "dusk-621x500.jpg",
+        "blurhash": "L8DJVRITxv_44T%Nt6M{00kCM_IT"
+      },
+      {
+        "imageCaption": "Egyption Teapot",
+        "imageSmall": "EgyptionTeapot-162x162.jpg",
+        "imageLarge": "EgyptionTeapot-307x500.jpg",
+        "blurhash": "LKKK+y_3_3xu~qj[j[t7ofofM{j["
+      },
+      {
+        "imageCaption": "Low Bowl",
+        "imageSmall": "lowBowl-162x162.jpg",
+        "imageLarge": "lowBowl-641x500.jpg",
+        "blurhash": "L1Db.{~q0K-p00Ri-B%M004n_34."
+      },
+      {
+        "imageCaption": "Mike Horn",
+        "imageSmall": "MikesHorn-162x162.jpg",
+        "imageLarge": "MikesHorn-500x500.jpg",
+        "blurhash": "LnOgKPV[-;-;~qRjIUt7t7xuxuWB"
+      },
+      {
+        "imageCaption": "Mini Tea Pot",
+        "imageSmall": "MiniTeaPot-162x162.jpg",
+        "imageLarge": "MiniTeaPot-364x500.jpg",
+        "blurhash": "LlJuMyRj~q-;xus:WBj[%MWBt7j["
+      },
+      {
+        "imageCaption": "P7034994",
+        "imageSmall": "P7034994-162x162.jpg",
+        "imageLarge": "P7034994-375x500.jpg",
+        "blurhash": "LMC7NBo[tjt6?[NFxut6IoM{s;of"
+      },
+      {
+        "imageCaption": "Planes and Angels Motion",
+        "imageSmall": "Planes-and-Angels-Motion-162x162.jpg",
+        "imageLarge": "Planes-and-Angels-Motion-397x500.jpg",
+        "blurhash": "L05E$[~q00j[_3D%D%-;~q-;fQWB"
+      },
+      {
+        "imageCaption": "Planes Angle 4",
+        "imageSmall": "PlanesAngle4-162x162.jpg",
+        "imageLarge": "PlanesAngle4-616x500.jpg",
+        "blurhash": "L38qNgay00%M_3RjIUay00%M~qM{"
+      },
+      {
+        "imageCaption": "Red Horn",
+        "imageSmall": "RedHorn-162x162.jpg",
+        "imageLarge": "RedHorn-224x500.jpg",
+        "blurhash": "LbL;BPRP~qx]r@RjkCbbt7t7t7ay"
+      },
+      {
+        "imageCaption": "Segmented",
+        "imageSmall": "Segmented-162x162.jpg",
+        "imageLarge": "Segmented-510x500.jpg",
+        "blurhash": "L6CP#D%M9Ft74nRjRjof9Fj[~qj["
+      },
+      {
+        "imageCaption": "Tall Bowl",
+        "imageSmall": "tallBowl-162x162.jpg",
+        "imageLarge": "tallBowl-650x500.jpg",
+        "blurhash": "L2B|BF~q00%M009F~q_300IU~q-;"
+      },
+      {
+        "imageCaption": "Tall Short",
+        "imageSmall": "TallShort-162x162.jpg",
+        "imageLarge": "TallShort-379x500.jpg",
+        "blurhash": "LTKx6p%M~q-;?bt7M{ofM{t7ayM{"
+      },
+      {
+        "imageCaption": "Three Bowls",
+        "imageSmall": "ThreeBowls-162x162.jpg",
+        "imageLarge": "ThreeBowls-606x500.jpg",
+        "blurhash": "L5D]Yu_39F-;~X?H_3Rj00a{xaWB"
+      },
+      {
+        "imageCaption": "Top 6",
+        "imageSmall": "Top-6-162x162.jpg",
+        "imageLarge": "Top-6-396x500.jpg",
+        "blurhash": "L8Bg3uay00~q00Rjt7M{IUWB-;t7"
+      },
+      {
+        "imageCaption": "Top 9",
+        "imageSmall": "Top-9-162x162.jpg",
+        "imageLarge": "Top-9-395x500.jpg",
+        "blurhash": "L58XFB?bD%~q-;oft7ofD%of?bWB"
+      },
+      {
+        "imageCaption": "Top 10",
+        "imageSmall": "Top-10-162x162.jpg",
+        "imageLarge": "Top-10-630x500.jpg",
+        "blurhash": "L18gy-_3WBxu00M{4nM{00IU~qof"
+      }
+    ],
+    "coverBlurhash": "L7D,A%4m%O_400.9ocIU00t7MxM_"
   },
   {
     "portfolio": "laterWorks",
@@ -40,22 +137,89 @@
       "year": 2011,
       "medium": "Ceramic sculpture — clay",
       "artistStatement": "These pieces were collectively created over the period from 2007 to 2011.",
-      "palette": ["#C0392B", "#E8B4B8", "#6B8E23", "#DAA520", "#F0EDE5"],
+      "palette": [
+        "#B8B8A8",
+        "#AEA79A",
+        "#E3E3DC",
+        "#EDEDE9",
+        "#F8F8F6"
+      ],
       "paragraphs": []
     },
     "images": [
-      { "imageCaption": "Close Up", "imageSmall": "CloseUp-162x162.jpg", "imageLarge": "CloseUp-501x500.jpg" },
-      { "imageCaption": "Garden Gourd", "imageSmall": "Garden-Gourd-162x162.jpg", "imageLarge": "Garden-Gourd-750x500.jpg" },
-      { "imageCaption": "Genetic Dispersment", "imageSmall": "genetic-dispersment-162x162.jpg", "imageLarge": "genetic-dispersment-333x500.jpg" },
-      { "imageCaption": "Genetic Gems 2 Detail", "imageSmall": "Genetic-Gems-2-Detail-162x162.jpg", "imageLarge": "Genetic-Gems-2-Detail-644x500.jpg" },
-      { "imageCaption": "Genetic Gems", "imageSmall": "Genetic-Gems-162x162.jpg", "imageLarge": "Genetic-Gems-638x500.jpg" },
-      { "imageCaption": "Gestures", "imageSmall": "Gestures-162x162.jpg", "imageLarge": "Gestures-610x500.jpg" },
-      { "imageCaption": "Lyrical Lines 1", "imageSmall": "LyricalLines1-162x162.jpg", "imageLarge": "LyricalLines1-666x500.jpg" },
-      { "imageCaption": "Lyrical Lines 2", "imageSmall": "LyricalLines2-162x162.jpg", "imageLarge": "LyricalLines2-666x500.jpg" },
-      { "imageCaption": "Mock Jungle", "imageSmall": "Mock-Jungle-162x162.jpg", "imageLarge": "Mock-Jungle-333x500.jpg" },
-      { "imageCaption": "Sex in the Garden", "imageSmall": "Sex-in-the-Garden-162x162.jpg", "imageLarge": "Sex-in-the-Garden-750x500.jpg" },
-      { "imageCaption": "Whats in a Gene", "imageSmall": "Whats-in-a-Gene-162x162.jpg", "imageLarge": "Whats-in-a-Gene-500x500.jpg" },
-      { "imageCaption": "Yummy Pink Garden 1", "imageSmall": "yummy-pink-garden1-162x162.jpg", "imageLarge": "yummy-pink-garden1-500x500.jpg" }
-    ]
+      {
+        "imageCaption": "Close Up",
+        "imageSmall": "CloseUp-162x162.jpg",
+        "imageLarge": "CloseUp-501x500.jpg",
+        "blurhash": "LDBW@?ae?at79tD*MyWB~Wxuxuju"
+      },
+      {
+        "imageCaption": "Garden Gourd",
+        "imageSmall": "Garden-Gourd-162x162.jpg",
+        "imageLarge": "Garden-Gourd-750x500.jpg",
+        "blurhash": "LRMHGWxv-:WB~qIUM{xu-;RiM|xu"
+      },
+      {
+        "imageCaption": "Genetic Dispersment",
+        "imageSmall": "genetic-dispersment-162x162.jpg",
+        "imageLarge": "genetic-dispersment-333x500.jpg",
+        "blurhash": "LKO46kMx%f~q-;IURjxuD%M{fQxu"
+      },
+      {
+        "imageCaption": "Genetic Gems 2 Detail",
+        "imageSmall": "Genetic-Gems-2-Detail-162x162.jpg",
+        "imageLarge": "Genetic-Gems-2-Detail-644x500.jpg",
+        "blurhash": "L79QKz^+~W?aD*M|M{Rj009ZD%Io"
+      },
+      {
+        "imageCaption": "Genetic Gems",
+        "imageSmall": "Genetic-Gems-162x162.jpg",
+        "imageLarge": "Genetic-Gems-638x500.jpg",
+        "blurhash": "LeLg|dxuj[t7_Nayayj[~qj[j[kC"
+      },
+      {
+        "imageCaption": "Gestures",
+        "imageSmall": "Gestures-162x162.jpg",
+        "imageLarge": "Gestures-610x500.jpg",
+        "blurhash": "L6KBK#~pE1%M9wtQIqNHtSadM{WB"
+      },
+      {
+        "imageCaption": "Lyrical Lines 1",
+        "imageSmall": "LyricalLines1-162x162.jpg",
+        "imageLarge": "LyricalLines1-666x500.jpg",
+        "blurhash": "L6K1s{_MIq-:01%0M{Rj00_2%LM|"
+      },
+      {
+        "imageCaption": "Lyrical Lines 2",
+        "imageSmall": "LyricalLines2-162x162.jpg",
+        "imageLarge": "LyricalLines2-666x500.jpg",
+        "blurhash": "L5J[CX~po#%M00IBIUM{01M}of%M"
+      },
+      {
+        "imageCaption": "Mock Jungle",
+        "imageSmall": "Mock-Jungle-162x162.jpg",
+        "imageLarge": "Mock-Jungle-333x500.jpg",
+        "blurhash": "LVK-d,%2?bV@_Nf6%MRjxuogIUj["
+      },
+      {
+        "imageCaption": "Sex in the Garden",
+        "imageSmall": "Sex-in-the-Garden-162x162.jpg",
+        "imageLarge": "Sex-in-the-Garden-750x500.jpg",
+        "blurhash": "LPKTxmx[t+%1x]WVbbae.maeV@kq"
+      },
+      {
+        "imageCaption": "Whats in a Gene",
+        "imageSmall": "Whats-in-a-Gene-162x162.jpg",
+        "imageLarge": "Whats-in-a-Gene-500x500.jpg",
+        "blurhash": "LWI#r$jE_NNGnhoetRkC_3kDIot7"
+      },
+      {
+        "imageCaption": "Yummy Pink Garden 1",
+        "imageSmall": "yummy-pink-garden1-162x162.jpg",
+        "imageLarge": "yummy-pink-garden1-500x500.jpg",
+        "blurhash": "LDK-au?bIUxa_NofaekC?vRixut7"
+      }
+    ],
+    "coverBlurhash": "LFKUJ^_3Dj%M~qbFe.ozNGf*n$xu"
   }
 ]

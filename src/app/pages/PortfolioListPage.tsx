@@ -51,6 +51,7 @@ export function PortfolioListPage() {
                     portfolio.portfolio,
                     toWebp(portfolio.portfolioImage),
                   )}
+                  blurhash={portfolio.coverBlurhash}
                   alt={portfolio.portfolioName}
                   className="w-full h-44 sm:h-48 object-cover transition-transform duration-300
                              group-hover:scale-105"

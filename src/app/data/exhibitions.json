@@ -10,16 +10,48 @@
       "year": 2010,
       "medium": "Clay sculpture",
       "artistStatement": "The spiral forms bring to mind the morning glory vines, swirling galaxies, hurricanes seen from outer space, molecular structures, and most growing thing that bend and sway in the forest, from the smallest to the largest elements of this world. They are products of my mind, composites of lots of looking at hairy, feathery plants the grow in streams, pods that fall at the end of the growing season, geometric solids and geological layering of many western landscapes.",
-      "palette": ["#5E7944", "#C9A96E", "#D4736C", "#8B6F4E", "#E8DDD0"],
+      "palette": [
+        "#A8A898",
+        "#989383",
+        "#DCDCD6",
+        "#E9E9E5",
+        "#F6F6F5"
+      ],
       "paragraphs": []
     },
     "images": [
-      { "imageCaption": "Close Up", "imageSmall": "CloseUp-copy-162x162.jpg", "imageLarge": "CloseUp-copy-501x500.jpg" },
-      { "imageCaption": "Garden Gourd", "imageSmall": "Garden-Gourd-copy-162x162.jpg", "imageLarge": "Garden-Gourd-copy-750x500.jpg" },
-      { "imageCaption": "Mock Jungle", "imageSmall": "Mock-Jungle-copy-162x162.jpg", "imageLarge": "Mock-Jungle-copy-333x500.jpg" },
-      { "imageCaption": "Sex in the Garden", "imageSmall": "Sex-in-the-Garden-copy-162x162.jpg", "imageLarge": "Sex-in-the-Garden-copy-750x500.jpg" },
-      { "imageCaption": "Yummy Pink Garden", "imageSmall": "yummy-pink-garden-copy-162x162.jpg", "imageLarge": "yummy-pink-garden-copy-500x500.jpg" }
-    ]
+      {
+        "imageCaption": "Close Up",
+        "imageSmall": "CloseUp-copy-162x162.jpg",
+        "imageLarge": "CloseUp-copy-501x500.jpg",
+        "blurhash": "LDBW@?ae?at79tD*MyWB~Wxuxuju"
+      },
+      {
+        "imageCaption": "Garden Gourd",
+        "imageSmall": "Garden-Gourd-copy-162x162.jpg",
+        "imageLarge": "Garden-Gourd-copy-750x500.jpg",
+        "blurhash": "LRMHGWxv-:WB~qIUM{xu-;RiM|xu"
+      },
+      {
+        "imageCaption": "Mock Jungle",
+        "imageSmall": "Mock-Jungle-copy-162x162.jpg",
+        "imageLarge": "Mock-Jungle-copy-333x500.jpg",
+        "blurhash": "LVK-d,%2?bV@_Nf6%MRjxuogIUj["
+      },
+      {
+        "imageCaption": "Sex in the Garden",
+        "imageSmall": "Sex-in-the-Garden-copy-162x162.jpg",
+        "imageLarge": "Sex-in-the-Garden-copy-750x500.jpg",
+        "blurhash": "LPKTxmx[t+%1x]WVbbae.maeV@kq"
+      },
+      {
+        "imageCaption": "Yummy Pink Garden",
+        "imageSmall": "yummy-pink-garden-copy-162x162.jpg",
+        "imageLarge": "yummy-pink-garden-copy-500x500.jpg",
+        "blurhash": "LDK-au?bIUxa_NofaekC?vRixut7"
+      }
+    ],
+    "coverBlurhash": "L9I#iKIVDk?b~T0hkDITMbN0IVng"
   },
   {
     "portfolio": "multiverse3",
@@ -35,13 +67,30 @@
         "text": "Linda Graham's work has shifted from a focus on sculptural clay work to new media installations that take on a host of materials from projection to plexiglass. These media installations engage with concepts of the microcosm to the macrocosm, from cellular structure to interstellar elements. Multiverse 3 is a projection piece that radically transforms the Rude Gallery into an ungrounded interface, redrafting the room's environments features.",
         "author": "Cortney Stell"
       },
-      "palette": ["#1B1464", "#6C3FA0", "#D4AF37", "#0D1B2A", "#E0E0E0"],
+      "palette": [
+        "#080808",
+        "#1F150C",
+        "#9C9C9C",
+        "#C1C1C1",
+        "#E6E6E6"
+      ],
       "paragraphs": []
     },
     "images": [
-      { "imageCaption": "Multiverse 3", "imageSmall": "Screen-Shot-2013-08-26-at-10.13.54-AM-162x162.png", "imageLarge": "Screen-Shot-2013-08-26-at-10.13.54-AM.png" },
-      { "videoCaption": "Multiverse 3", "imageSmall": "video-162x162.png", "videoLarge": "http://content.jwplatform.com/players/RJS7Qcdi-S3u9V5Nq.html" }
-    ]
+      {
+        "imageCaption": "Multiverse 3",
+        "imageSmall": "Screen-Shot-2013-08-26-at-10.13.54-AM-162x162.png",
+        "imageLarge": "Screen-Shot-2013-08-26-at-10.13.54-AM.png",
+        "blurhash": "LBEV1bLeaP01~U.6M}M{03wIxYpH"
+      },
+      {
+        "videoCaption": "Multiverse 3",
+        "imageSmall": "video-162x162.png",
+        "videoLarge": "http://content.jwplatform.com/players/RJS7Qcdi-S3u9V5Nq.html",
+        "blurhash": "L98gQn~99EIB^h-maxaf01EM?v%M"
+      }
+    ],
+    "coverBlurhash": "L86tQ~~8xFi|^h-moKjHEhI=Sfoe"
   },
   {
     "portfolio": "electromagneticTransformation",
@@ -54,18 +103,49 @@
       "year": 2013,
       "medium": "Plexiglass, ultraviolet light, fluorescent materials",
       "artistStatement": "The pieces of Electromagnetic Transformations explore the fascinating properties of plexiglass when exposed to various light wave lengths. In Multiverse 3, a projection cast onto a bent sheet of yellow plexiglass creates the illusion of three dimensions and shows a change in the wave length when light travels across the curved surface. In Illusive Reality, the fluorescent edges are highlighted when exposed to ultraviolet light that can't be seen until the wave length is reduced to the visible range when a photon is released. The almost transparent plexiglass panels reflect and transmit light to create a complexity of images. Evolving Multiverses plays with the nearly invisible panel of plexiglass viewed straight on but with enhanced visual interest in the glowing fluorescent edges.",
-      "palette": ["#00CED1", "#FF6EC7", "#1A1A2E", "#9B59B6", "#F0E68C"],
+      "palette": [
+        "#C8C8D8",
+        "#979085",
+        "#E9E9EF",
+        "#F1F1F5",
+        "#FAFAFB"
+      ],
       "paragraphs": [
         "The advancement of the technology of telescopes and measuring instruments, using different wave lengths to highlight different components, has led to an explosion of information about what the cosmos contains. And what I find in the work I have been making lately is a representation of what I have been pondering: wormholes, multiverses, alternative realities, etc."
       ]
     },
     "images": [
-      { "videoCaption": "Multiverse 3", "imageSmall": "video-162x162.png", "videoLarge": "http://content.jwplatform.com/players/RJS7Qcdi-S3u9V5Nq.html" },
-      { "imageCaption": "Illusive Reality", "imageSmall": "IllusiveReality2-162x162.jpg", "imageLarge": "IllusiveReality2-333x500.jpg" },
-      { "imageCaption": "Evolving Multiverses", "imageSmall": "Evolving-Multiverses-162x162.jpg", "imageLarge": "Evolving-Multiverses-333x500.jpg" },
-      { "imageCaption": "Serenity", "imageSmall": "Serenity-162x162.jpg", "imageLarge": "Serenity-333x500.jpg" },
-      { "imageCaption": "Reflections Deep Space", "imageSmall": "Reflections-Deep-Space-162x162.jpg", "imageLarge": "Reflections-Deep-Space-333x500.jpg" }
-    ]
+      {
+        "videoCaption": "Multiverse 3",
+        "imageSmall": "video-162x162.png",
+        "videoLarge": "http://content.jwplatform.com/players/RJS7Qcdi-S3u9V5Nq.html"
+      },
+      {
+        "imageCaption": "Illusive Reality",
+        "imageSmall": "IllusiveReality2-162x162.jpg",
+        "imageLarge": "IllusiveReality2-333x500.jpg",
+        "blurhash": "LLNT2Mw~AK,BThn5axbpp{btwbai"
+      },
+      {
+        "imageCaption": "Evolving Multiverses",
+        "imageSmall": "Evolving-Multiverses-162x162.jpg",
+        "imageLarge": "Evolving-Multiverses-333x500.jpg",
+        "blurhash": "LVL|}%.TTL-V_KoJajbZVsR*NbaK"
+      },
+      {
+        "imageCaption": "Serenity",
+        "imageSmall": "Serenity-162x162.jpg",
+        "imageLarge": "Serenity-333x500.jpg",
+        "blurhash": "LAF61{9Y4j$u4Rt0]:RQTuR.ovox"
+      },
+      {
+        "imageCaption": "Reflections Deep Space",
+        "imageSmall": "Reflections-Deep-Space-162x162.jpg",
+        "imageLarge": "Reflections-Deep-Space-333x500.jpg",
+        "blurhash": "L#Lqb2t7~qt7RPj[ayofM{WBRjof"
+      }
+    ],
+    "coverBlurhash": "LLJkM??D~VJC58M{M}s:00IqM|xY"
   },
   {
     "portfolio": "myModernAesthetic",
@@ -74,20 +154,71 @@
     "description": {
       "title": "My Modern Aesthetic",
       "medium": "Mixed media — acrylic, plexiglass, projection",
-      "palette": ["#2C3E50", "#E74C3C", "#ECF0F1", "#3498DB", "#F39C12"],
+      "palette": [
+        "#D8D8D8",
+        "#8D8A78",
+        "#EFEFEF",
+        "#F5F5F5",
+        "#FBFBFB"
+      ],
       "paragraphs": []
     },
     "images": [
-      { "imageCaption": "Coney Island", "imageSmall": "ConeyIslandFolder.jpg", "imageLarge": "ConeyIslandCover.jpg" },
-      { "imageCaption": "Dualities", "imageSmall": "DualitiesFolder.jpg", "imageLarge": "DualitiesCover.jpg" },
-      { "imageCaption": "Euclids Leftovers", "imageSmall": "EuclidsLeftoversFolder.jpg", "imageLarge": "EuclidsLeftoversCover.jpg" },
-      { "imageCaption": "Euclids Study", "imageSmall": "EuclidsStudyFolder.jpg", "imageLarge": "EuclidsStudyCover.jpg" },
-      { "imageCaption": "Ice", "imageSmall": "IceFolder.jpg", "imageLarge": "IceCover.jpg" },
-      { "imageCaption": "Intergalactic Maze", "imageSmall": "IntergalacticMazeFolder.jpg", "imageLarge": "IntergalacticMazeCover.jpg" },
-      { "imageCaption": "Negative Spaces", "imageSmall": "NegativeSpacesFolder.jpg", "imageLarge": "NegativeSpacesCover.jpg" },
-      { "imageCaption": "Portals", "imageSmall": "PortalsFolder.jpg", "imageLarge": "PortalsCover.jpg" },
-      { "videoCaption": "My Modern Aesthetic", "imageSmall": "VideoIcon.jpg", "videoLarge": "http://content.jwplatform.com/players/gxvp9GtL-S3u9V5Nq.html" }
-    ]
+      {
+        "imageCaption": "Coney Island",
+        "imageSmall": "ConeyIslandFolder.jpg",
+        "imageLarge": "ConeyIslandCover.jpg",
+        "blurhash": "LqLDiLofgNkC~CogbtbbRObce,a#"
+      },
+      {
+        "imageCaption": "Dualities",
+        "imageSmall": "DualitiesFolder.jpg",
+        "imageLarge": "DualitiesCover.jpg",
+        "blurhash": "LCH.KK_3D%%M?vxvIUj?~pof9ZRj"
+      },
+      {
+        "imageCaption": "Euclids Leftovers",
+        "imageSmall": "EuclidsLeftoversFolder.jpg",
+        "imageLarge": "EuclidsLeftoversCover.jpg",
+        "blurhash": "L9OyhO~VGJ?b^jbcOaX9n0SO#PS$"
+      },
+      {
+        "imageCaption": "Euclids Study",
+        "imageSmall": "EuclidsStudyFolder.jpg",
+        "imageLarge": "EuclidsStudyCover.jpg",
+        "blurhash": "LCM%cXa0TM%0-pj=OtX97%aeMxS$"
+      },
+      {
+        "imageCaption": "Ice",
+        "imageSmall": "IceFolder.jpg",
+        "imageLarge": "IceCover.jpg",
+        "blurhash": "LRKnrR-=IVkC_4ogbJof00aejYay"
+      },
+      {
+        "imageCaption": "Intergalactic Maze",
+        "imageSmall": "IntergalacticMazeFolder.jpg",
+        "imageLarge": "IntergalacticMazeCover.jpg",
+        "blurhash": "LfEO9Fz_w7Xy.jr_nlbYeaWBbXRj"
+      },
+      {
+        "imageCaption": "Negative Spaces",
+        "imageSmall": "NegativeSpacesFolder.jpg",
+        "imageLarge": "NegativeSpacesCover.jpg",
+        "blurhash": "LKNmZdKqO]$,yTk7NZoHCmr2nMSw"
+      },
+      {
+        "imageCaption": "Portals",
+        "imageSmall": "PortalsFolder.jpg",
+        "imageLarge": "PortalsCover.jpg"
+      },
+      {
+        "videoCaption": "My Modern Aesthetic",
+        "imageSmall": "VideoIcon.jpg",
+        "videoLarge": "http://content.jwplatform.com/players/gxvp9GtL-S3u9V5Nq.html",
+        "blurhash": "LGRMb$?b00xuIUoMD%Rj~qjY?bxu"
+      }
+    ],
+    "coverBlurhash": "LJIOh6}cITR#XA%Kafof00Olx^Mz"
   },
   {
     "portfolio": "personalPerceptions",
@@ -99,28 +230,110 @@
       "year": 2014,
       "medium": "Acrylic sheets, projected light, SketchUp animation",
       "artistStatement": "An animated SketchUp generated video cast onto a bent sheet of yellow acrylic sheet creates the illusion of three dimensions and shows a change in the wave length when light travels across the curved surface. With the addition of green bent acrylic sheet panels in front, the mystery of light and color is enhanced. The interaction of these items creates a mysterious 3-D effect. The mind is free to experience a multitude of ideas.",
-      "palette": ["#2ECC71", "#F1C40F", "#8E44AD", "#1ABC9C", "#34495E"],
+      "palette": [
+        "#281818",
+        "#464329",
+        "#A9A3A3",
+        "#C9C5C5",
+        "#E9E8E8"
+      ],
       "paragraphs": [
         "The exhibit showing at Hinterland, November 13 - December 5, is an installation using acrylic sheets, projected light and a darkened space."
       ]
     },
     "images": [
-      { "imageCaption": "PP #1", "imageSmall": "PP1folder.jpg", "imageLarge": "PP1cover.jpg" },
-      { "imageCaption": "PP #2", "imageSmall": "PP2folder.jpg", "imageLarge": "PP2cover.jpg" },
-      { "imageCaption": "PP #3", "imageSmall": "PP3folder.jpg", "imageLarge": "PP3cover.jpg" },
-      { "imageCaption": "PP #4", "imageSmall": "PP4folder.jpg", "imageLarge": "PP4cover.jpg" },
-      { "imageCaption": "PP #5", "imageSmall": "PP5folder.jpg", "imageLarge": "PP5cover.jpg" },
-      { "imageCaption": "PP #6", "imageSmall": "PP6folder.jpg", "imageLarge": "PP6cover.jpg" },
-      { "imageCaption": "PP #7", "imageSmall": "PP7folder.jpg", "imageLarge": "PP7cover.jpg" },
-      { "imageCaption": "PP #8", "imageSmall": "PP8folder.jpg", "imageLarge": "PP8cover.jpg" },
-      { "imageCaption": "PP #9", "imageSmall": "PP9folder.jpg", "imageLarge": "PP9cover.jpg" },
-      { "imageCaption": "PP #10", "imageSmall": "PP10folder.jpg", "imageLarge": "PP10cover.jpg" },
-      { "imageCaption": "PP #11", "imageSmall": "PP11folder.jpg", "imageLarge": "PP11cover.jpg" },
-      { "imageCaption": "PP #12", "imageSmall": "PP12folder.jpg", "imageLarge": "PP12cover.jpg" },
-      { "imageCaption": "PP #13", "imageSmall": "PP13folder.jpg", "imageLarge": "PP13cover.jpg" },
-      { "imageCaption": "PP #14", "imageSmall": "PP14folder.jpg", "imageLarge": "PP14cover.jpg" },
-      { "imageCaption": "PP #15", "imageSmall": "PP15folder.jpg", "imageLarge": "PP15cover.jpg" }
-    ]
+      {
+        "imageCaption": "PP #1",
+        "imageSmall": "PP1folder.jpg",
+        "imageLarge": "PP1cover.jpg",
+        "blurhash": "L31N5ETDe9n5lCkSaJenV1jKf~ac"
+      },
+      {
+        "imageCaption": "PP #2",
+        "imageSmall": "PP2folder.jpg",
+        "imageLarge": "PP2cover.jpg",
+        "blurhash": "L32G=XuXMLRYTLaes*tkQDVfo_ob"
+      },
+      {
+        "imageCaption": "PP #3",
+        "imageSmall": "PP3folder.jpg",
+        "imageLarge": "PP3cover.jpg",
+        "blurhash": "L11Dma%ztml+XUaRnBoNL*RQVaZ7"
+      },
+      {
+        "imageCaption": "PP #4",
+        "imageSmall": "PP4folder.jpg",
+        "imageLarge": "PP4cover.jpg",
+        "blurhash": "L026r~~KzsHA0A4{NK#9hil7psmB"
+      },
+      {
+        "imageCaption": "PP #5",
+        "imageSmall": "PP5folder.jpg",
+        "imageLarge": "PP5cover.jpg",
+        "blurhash": "L11:j%s78#K7OHbYxooeD7S%.hv}"
+      },
+      {
+        "imageCaption": "PP #6",
+        "imageSmall": "PP6folder.jpg",
+        "imageLarge": "PP6cover.jpg",
+        "blurhash": "L02Zbf^D0D3p0EJW_C?RHXTgy3qd"
+      },
+      {
+        "imageCaption": "PP #7",
+        "imageSmall": "PP7folder.jpg",
+        "imageLarge": "PP7cover.jpg",
+        "blurhash": "L126$et18wT1S-kqxki]L*XCylm%"
+      },
+      {
+        "imageCaption": "PP #8",
+        "imageSmall": "PP8folder.jpg",
+        "imageLarge": "PP8cover.jpg",
+        "blurhash": "L11X1*kNHXnSXYkVm%ayL$V~t_kS"
+      },
+      {
+        "imageCaption": "PP #9",
+        "imageSmall": "PP9folder.jpg",
+        "imageLarge": "PP9cover.jpg",
+        "blurhash": "L227Q[FKzBUGO]xnSzpJUvogXUm+"
+      },
+      {
+        "imageCaption": "PP #10",
+        "imageSmall": "PP10folder.jpg",
+        "imageLarge": "PP10cover.jpg",
+        "blurhash": "L01DEjD9mT*IXqtRaQbwD4*GcsM1"
+      },
+      {
+        "imageCaption": "PP #11",
+        "imageSmall": "PP11folder.jpg",
+        "imageLarge": "PP11cover.jpg",
+        "blurhash": "L02iIH06H^~lJD%0n*I=04_I%w05"
+      },
+      {
+        "imageCaption": "PP #12",
+        "imageSmall": "PP12folder.jpg",
+        "imageLarge": "PP12cover.jpg",
+        "blurhash": "L5AKK91hH^;LugsWr[XM0C;5%KE#"
+      },
+      {
+        "imageCaption": "PP #13",
+        "imageSmall": "PP13folder.jpg",
+        "imageLarge": "PP13cover.jpg",
+        "blurhash": "L25OvJJB07vP.SXQV^RR4hob?pO-"
+      },
+      {
+        "imageCaption": "PP #14",
+        "imageSmall": "PP14folder.jpg",
+        "imageLarge": "PP14cover.jpg",
+        "blurhash": "L25YAp0nnU?qtmt5t7bb07?CpEDn"
+      },
+      {
+        "imageCaption": "PP #15",
+        "imageSmall": "PP15folder.jpg",
+        "imageLarge": "PP15cover.jpg",
+        "blurhash": "LIC*1J~QYwt~?ooKS3ovIrIrVvsm"
+      }
+    ],
+    "coverBlurhash": "L29QmS*r4T.S0h4pInIp00%f?^r="
   },
   {
     "portfolio": "binaries",
@@ -131,23 +344,85 @@
       "medium": "Acrylic objects, sculptural installation",
       "collaborator": "S. Fletcher Graham",
       "artistStatement": "Binaries is a sculptural collaboration by Linda Melvin Graham and S. Fletcher Graham exploring the paradox of human destruction and advancements. The work expresses the concerns about our current destructive treatment of the planet, and the hopes that advancements in many fields of science and technology will help us overcome many of these difficulties and understand more about ourselves and our place in the cosmos.",
-      "palette": ["#0D0D0D", "#4A0E4E", "#2ECC71", "#E74C3C", "#F5F5DC"],
+      "palette": [
+        "#080808",
+        "#76696E",
+        "#9C9C9C",
+        "#C1C1C1",
+        "#E6E6E6"
+      ],
       "paragraphs": [
         "This exhibit has three areas of focus, each representing some aspect of this paradox. The colors used in the abstract acrylic objects hanging overhead in the gallery change from somber blacks, blues and purples to more optimistic greens, reds and yellows, as the viewer moves from \"Dystopia\" representing the grim reality of our dystopian future, to \"Resilience\" an acrylic depiction of the geological timeline with the 5 previous extinctions plus the one we may be experiencing currently, to the back of the gallery where \"Transition\" represents a more hopeful future of Homo sapiens as we move toward an intergalactic experience and continue to adapt to the realities of a sustainable existence on the earth."
       ]
     },
     "images": [
-      { "imageCaption": "Dystopia", "imageSmall": "DystopiaFolder.jpg", "imageLarge": "DystopiaCover.jpg" },
-      { "imageCaption": "Dystopia: Escape", "imageSmall": "DystopiaEscapeFolder.jpg", "imageLarge": "DystopiaEscapeCover.jpg" },
-      { "imageCaption": "Dystopia: Fletcher Mural", "imageSmall": "DystopiaFletcherMuralFolder.jpg", "imageLarge": "DystopiaFletcherMuralCover.jpg" },
-      { "imageCaption": "Gallery: Binaries Poster", "imageSmall": "GalleryBinariesPosterFolder.png", "imageLarge": "GalleryBinariesPosterCover.png" },
-      { "imageCaption": "Gallery: Signage", "imageSmall": "GallerySignageFolder.jpg", "imageLarge": "GallerySignageCover.jpg" },
-      { "imageCaption": "Resilience: A", "imageSmall": "ResilienceAFolder.jpg", "imageLarge": "ResilienceACover.jpg" },
-      { "imageCaption": "Resilience: B", "imageSmall": "ResilienceBFolder.jpg", "imageLarge": "ResilienceBCover.jpg" },
-      { "imageCaption": "Resilience: C", "imageSmall": "ResilienceCFolder.jpg", "imageLarge": "ResilienceCCover.jpg" },
-      { "imageCaption": "Transition: Entry", "imageSmall": "TransitionEntryFolder.jpg", "imageLarge": "TransitionEntryCover.jpg" },
-      { "imageCaption": "Transition: ScreenShot", "imageSmall": "TransitionScreenShotFolder.png", "imageLarge": "TransitionScreenShotCover.png" },
-      { "videoCaption": "Exodus Animation", "imageSmall": "VideoIcon.jpg", "videoLarge": "http://content.jwplatform.com/players/InPrbxuD-S3u9V5Nq.html" }
-    ]
+      {
+        "imageCaption": "Dystopia",
+        "imageSmall": "DystopiaFolder.jpg",
+        "imageLarge": "DystopiaCover.jpg",
+        "blurhash": "L=LE1$t7j]t7~qoeWWj[M{WBa#ay"
+      },
+      {
+        "imageCaption": "Dystopia: Escape",
+        "imageSmall": "DystopiaEscapeFolder.jpg",
+        "imageLarge": "DystopiaEscapeCover.jpg",
+        "blurhash": "L*KKi{snozX7~qofoLo1X5oysmni"
+      },
+      {
+        "imageCaption": "Dystopia: Fletcher Mural",
+        "imageSmall": "DystopiaFletcherMuralFolder.jpg",
+        "imageLarge": "DystopiaFletcherMuralCover.jpg",
+        "blurhash": "L06@m7:4=_~V00OstRNa0JS$WCNG"
+      },
+      {
+        "imageCaption": "Gallery: Binaries Poster",
+        "imageSmall": "GalleryBinariesPosterFolder.png",
+        "imageLarge": "GalleryBinariesPosterCover.png",
+        "blurhash": "LCIhssxu00-;~qRj00t700Rj00Rj"
+      },
+      {
+        "imageCaption": "Gallery: Signage",
+        "imageSmall": "GallerySignageFolder.jpg",
+        "imageLarge": "GallerySignageCover.jpg",
+        "blurhash": "LROpZ0My4.-:~A%LS1ep9GkCbHRP"
+      },
+      {
+        "imageCaption": "Resilience: A",
+        "imageSmall": "ResilienceAFolder.jpg",
+        "imageLarge": "ResilienceACover.jpg",
+        "blurhash": "LOExtwV?_Nnj0KWE9FM{tSoK-pt7"
+      },
+      {
+        "imageCaption": "Resilience: B",
+        "imageSmall": "ResilienceBFolder.jpg",
+        "imageLarge": "ResilienceBCover.jpg",
+        "blurhash": "LmLW*7%2?^xvMwoJt7ayoNa}kAj["
+      },
+      {
+        "imageCaption": "Resilience: C",
+        "imageSmall": "ResilienceCFolder.jpg",
+        "imageLarge": "ResilienceCCover.jpg",
+        "blurhash": "LfOpiKxu?wofxCjZxvkCIUWBoeWX"
+      },
+      {
+        "imageCaption": "Transition: Entry",
+        "imageSmall": "TransitionEntryFolder.jpg",
+        "imageLarge": "TransitionEntryCover.jpg",
+        "blurhash": "LTGIv8o$_N%N?aadxuV[IA%MWBod"
+      },
+      {
+        "imageCaption": "Transition: ScreenShot",
+        "imageSmall": "TransitionScreenShotFolder.png",
+        "imageLarge": "TransitionScreenShotCover.png",
+        "blurhash": "L01.+~M{D%xu-;M{fQxuIUayt7WB"
+      },
+      {
+        "videoCaption": "Exodus Animation",
+        "imageSmall": "VideoIcon.jpg",
+        "videoLarge": "http://content.jwplatform.com/players/InPrbxuD-S3u9V5Nq.html",
+        "blurhash": "LGRMb$?b00xuIUoMD%Rj~qjY?bxu"
+      }
+    ],
+    "coverBlurhash": "LFGbM24T~W?c%gNGS4xZ00?cITD$"
   }
 ]

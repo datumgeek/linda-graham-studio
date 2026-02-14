@@ -30,7 +30,7 @@ jobs:
         run: npx nx test linda-graham-studio --skip-nx-cache
 
       - name: Optimize images
-        run: node scripts/optimize-images.mjs
+        run: node scripts/enrich-data.mjs && node scripts/optimize-images.mjs
 
       - name: Build
         run: npx nx build linda-graham-studio --skip-nx-cache

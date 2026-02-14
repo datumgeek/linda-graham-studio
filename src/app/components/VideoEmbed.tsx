@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
 interface VideoEmbedProps {
   src: string;
@@ -9,13 +9,33 @@ interface VideoEmbedProps {
 }
 
 /**
+ * Convert a JW Platform player URL to a direct MP4 and poster URL.
+ * e.g. http://content.jwplatform.com/players/RJS7Qcdi-S3u9V5Nq.html
+ *   → mp4:    https://cdn.jwplayer.com/videos/RJS7Qcdi-JzxQ5USO.mp4
+ *   → poster: https://assets-jpcust.jwpsrv.com/thumbs/RJS7Qcdi-720.jpg
+ */
+function parseJwPlatformUrl(src: string): { mp4: string; poster: string } | null {
+  const match = src.match(/jwplatform\.com\/players\/([A-Za-z0-9]+)/);
+  if (!match) return null;
+  const mediaId = match[1];
+  return {
+    mp4: `https://cdn.jwplayer.com/videos/${mediaId}-JzxQ5USO.mp4`,
+    poster: `https://assets-jpcust.jwpsrv.com/thumbs/${mediaId}-720.jpg`,
+  };
+}
+
+/*// Try to extract direct MP4 + poster from JW Platform URL
+  const jwInfo = useMemo(() => parseJwPlatformUrl(secureSrc), [secureSrc]);
+
+  // Use JW poster if no custom poster provided
+  const effectivePoster = posterSrc || jwInfo?.poster;
+
+  *
  * Lazy video embed — shows a lightweight poster facade that loads
- * the actual iframe only when the user clicks play.
+ * the actual video only when the user clicks play.
  *
- * Benefits:
- * - Zero iframe overhead until user interacts
- * - Works with JWPlatform, YouTube, Vimeo, or any embeddable URL
- * - Falls back gracefully if embed fails
+ * For JW Platform URLs, uses native HTML5 <video> with direct MP4
+ * for reliable playback. For other URLs, falls back to iframe embed.
  */
 export function VideoEmbed({ src, title, className = '', posterSrc }: VideoEmbedProps) {
   const [activated, setActivated] = useState(false);
@@ -61,9 +81,9 @@ export function VideoEmbed({ src, title, className = '', posterSrc }: VideoEmbed
         aria-label={`Play video: ${title}`}
       >
         {/* Poster image or gradient placeholder */}
-        {posterSrc ? (
+        {effectivePoster ? (
           <img
-            src={posterSrc}
+            src={effectivePoster}
             alt=""
             className="w-full h-full object-cover"
             loading="lazy"
@@ -99,6 +119,24 @@ export function VideoEmbed({ src, title, className = '', posterSrc }: VideoEmbed
     );
   }
 
+  // For JW Platform URLs, use native HTML5 <video> for reliable playback
+  if (jwInfo) {
+    return (
+      <video
+        src={jwInfo.mp4}
+        poster={effectivePoster || undefined}
+        controls
+        autoPlay
+        className={`rounded-lg ${className}`}
+        onError={() => setError(true)}
+      >
+        <track kind="captions" />
+        Your browser does not support the video tag.
+      </video>
+    );
+  }
+
+  // For other embed URLs, fall back to iframe
   return (
     <iframe
       src={secureSrc}

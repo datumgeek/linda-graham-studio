@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useCallback, useState, useRef } from 'react';
 import { usePortfolioContext } from '../hooks/usePortfolioContext';
-import { getImageUrl, toWebp, getResponsiveSrcSet } from '../data/portfolio-data';
+import { getImageUrl, toWebp } from '../data/portfolio-data';
 import { useSwipe } from '../hooks/useSwipe';
 import { Lightbox } from '../components/Lightbox';
 import { VideoEmbed } from '../components/VideoEmbed';
@@ -197,7 +197,6 @@ export function PortfolioCarouselPage() {
             <ArtworkImage
               src={getImageUrl(listName, portfolio.portfolio, current.imageLarge!)}
               webpSrc={getImageUrl(listName, portfolio.portfolio, toWebp(current.imageLarge!))}
-              webpSrcSet={getResponsiveSrcSet(listName, portfolio.portfolio, current.imageLarge!)}
               alt={caption}
               className="max-h-[calc(100vh-16rem)] max-w-full object-contain cursor-zoom-in"
               fallbackClassName="w-64 h-48"
@@ -351,9 +350,8 @@ export function PortfolioCarouselPage() {
         >
           <picture>
             <source
-              srcSet={getResponsiveSrcSet(listName, portfolio.portfolio, current.imageLarge!)}
+              srcSet={getImageUrl(listName, portfolio.portfolio, toWebp(current.imageLarge!))}
               type="image/webp"
-              sizes="95vw"
             />
             <img
               src={getImageUrl(listName, portfolio.portfolio, current.imageLarge!)}

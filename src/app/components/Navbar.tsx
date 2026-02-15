@@ -64,6 +64,11 @@ export function Navbar({ onSearchOpen }: NavbarProps) {
                   Map
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/gallery" onClick={closeMenu}>
+                  Gallery 3D
+                </NavLink>
+              </li>
             </ul>
           )}
         </div>
@@ -95,6 +100,9 @@ export function Navbar({ onSearchOpen }: NavbarProps) {
           </li>
           <li>
             <NavLink to="/map">Map</NavLink>
+          </li>
+          <li>
+            <NavLink to="/gallery">Gallery 3D</NavLink>
           </li>
         </ul>
       </div>

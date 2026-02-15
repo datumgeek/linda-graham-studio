@@ -221,9 +221,14 @@
 - ✅ Ambient gradient animation on home page
 - ✅ CSS keyframes with dynamic color shifting
 
-### 7.2 Virtual Gallery Walk ⬜
-- ⬜ 3D panoramic view with Three.js
-- ⬜ Click artworks on wall to enter detail view
+### 7.2 Virtual Gallery Walk ✅
+- ✅ 3D panoramic view with Three.js (react-three/fiber + drei)
+- ✅ Click artworks on wall to enter detail view
+- ✅ Gallery room with walls, floor, ceiling, bench, baseboards
+- ✅ Framed artworks with gold mat, label plaques, spotlights
+- ✅ Hover glow effect and cursor change
+- ✅ OrbitControls for look-around, zoom, and touch gestures
+- ✅ Three.js vendor chunk splitting for optimal loading
 
 ### 7.3 Color Palette Extraction ✅
 - ✅ Auto-extract dominant colors from portfolio cover images
@@ -264,15 +269,16 @@
 | **14** | Blurhash/LQIP placeholders, cover blurhash, auto palettes, unused image cleanup, preconnect hints | ✅ |
 | **15** | Enhanced Related Works (medium-based relevance, blurhash/WebP), carousel/video fixes | ✅ |
 | **16** | Visual regression tests (15 Playwright screenshot tests: pages, components, responsive, dark mode) | ✅ |
+| **17** | Virtual Gallery Walk (Three.js 3D room, framed artworks, orbit controls, vendor chunk splitting) | ✅ |
 
 ## Remaining Items
 
 | Item | Phase | Priority |
 |------|-------|----------|
 | Nx Libraries reorganization | 6.4 | Low |
-| Virtual Gallery Walk (Three.js) | 7.2 | Exploratory |
+
 | Audio Commentary | 7.5 | Exploratory |
 
 ---
 
-*This plan has been systematically implemented across 16 sprints, transforming the site from a faithful Angular-to-React port into a modern, gallery-quality web experience worthy of Linda's art.*
+*This plan has been systematically implemented across 17 sprints, transforming the site from a faithful Angular-to-React port into a modern, gallery-quality web experience worthy of Linda's art.*

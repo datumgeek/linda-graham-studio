@@ -33,6 +33,9 @@ const TimelinePage = lazy(() =>
 const MapPage = lazy(() =>
   import('./pages/MapPage').then((m) => ({ default: m.MapPage })),
 );
+const GalleryWalkPage = lazy(() =>
+  import('./pages/GalleryWalkPage').then((m) => ({ default: m.GalleryWalkPage })),
+);
 const NotFoundPage = lazy(() =>
   import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
 );
@@ -56,6 +59,7 @@ export function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/timeline" element={<TimelinePage />} />
             <Route path="/map" element={<MapPage />} />
+            <Route path="/gallery" element={<GalleryWalkPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

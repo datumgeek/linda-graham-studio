@@ -193,7 +193,7 @@
 - ✅ Unit tests: data helpers, utility functions (Vitest — 20 tests)
 - ✅ Component tests: portfolio rendering, toast, search (Testing Library)
 - ✅ E2E tests: Playwright with Chromium (12 tests)
-- ⬜ Visual regression tests (Chromatic/Percy)
+- ✅ Visual regression tests (Playwright built-in screenshot comparison — 15 visual tests)
 
 ### 6.2 CI/CD ✅
 - ✅ GitHub Actions: lint, test, build on every push (`ci.yml`)
@@ -263,16 +263,16 @@
 | **13** | JSON data extraction, image optimization pipeline, video facade, Storybook | ✅ |
 | **14** | Blurhash/LQIP placeholders, cover blurhash, auto palettes, unused image cleanup, preconnect hints | ✅ |
 | **15** | Enhanced Related Works (medium-based relevance, blurhash/WebP), carousel/video fixes | ✅ |
+| **16** | Visual regression tests (15 Playwright screenshot tests: pages, components, responsive, dark mode) | ✅ |
 
 ## Remaining Items
 
 | Item | Phase | Priority |
 |------|-------|----------|
-| Visual regression tests (Chromatic/Percy) | 6.1 | Low |
 | Nx Libraries reorganization | 6.4 | Low |
 | Virtual Gallery Walk (Three.js) | 7.2 | Exploratory |
 | Audio Commentary | 7.5 | Exploratory |
 
 ---
 
-*This plan has been systematically implemented across 15 sprints, transforming the site from a faithful Angular-to-React port into a modern, gallery-quality web experience worthy of Linda's art.*
+*This plan has been systematically implemented across 16 sprints, transforming the site from a faithful Angular-to-React port into a modern, gallery-quality web experience worthy of Linda's art.*

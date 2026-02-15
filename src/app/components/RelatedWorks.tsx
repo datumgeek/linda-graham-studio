@@ -2,23 +2,50 @@ import { Link } from 'react-router-dom';
 import {
   portfolios,
   getPortfolioThumbUrl,
+  toWebp,
   type Portfolio,
   type PortfolioListName,
 } from '../data/portfolio-data';
 import { FadeIn } from './FadeIn';
+import { ProgressiveImage } from './ProgressiveImage';
 
 interface RelatedWorksProps {
   /** Current portfolio key to exclude from suggestions */
   currentKey: string;
   /** Current list name for same-category matching */
   currentListName: PortfolioListName;
+  /** Current medium for relevance sorting */
+  currentMedium?: string;
   /** Max items to show */
   max?: number;
+}
+
+/**
+ * Score how related a candidate portfolio is to the current one.
+ * Higher = more related.
+ */
+function relevanceScore(
+  candidate: Portfolio,
+  currentMedium?: string,
+): number {
+  let score = 0;
+  // Similar medium keywords
+  if (currentMedium && candidate.description.medium) {
+    const currentWords = currentMedium.toLowerCase().split(/[\s,]+/);
+    const candidateWords = candidate.description.medium.toLowerCase().split(/[\s,]+/);
+    for (const word of currentWords) {
+      if (word.length > 2 && candidateWords.includes(word)) score += 10;
+    }
+  }
+  // Prefer portfolios with more images (richer content)
+  score += Math.min(candidate.images.length, 5);
+  return score;
 }
 
 export function RelatedWorks({
   currentKey,
   currentListName,
+  currentMedium,
   max = 3,
 }: RelatedWorksProps) {
   // Gather candidates: same category first, then other category
@@ -34,7 +61,12 @@ export function RelatedWorks({
     ...otherCategory.map((p) => ({ portfolio: p, listName: otherListName })),
   ];
 
-  // Take up to max
+  // Sort by relevance, then take top N
+  candidates.sort(
+    (a, b) =>
+      relevanceScore(b.portfolio, currentMedium) -
+      relevanceScore(a.portfolio, currentMedium),
+  );
   const related = candidates.slice(0, max);
 
   if (related.length === 0) return null;
@@ -54,12 +86,18 @@ export function RelatedWorks({
                          transition-all duration-300 overflow-hidden"
             >
               <figure className="overflow-hidden">
-                <img
+                <ProgressiveImage
                   src={getPortfolioThumbUrl(
                     listName,
                     portfolio.portfolio,
                     portfolio.portfolioImage,
                   )}
+                  webpSrc={getPortfolioThumbUrl(
+                    listName,
+                    portfolio.portfolio,
+                    toWebp(portfolio.portfolioImage),
+                  )}
+                  blurhash={portfolio.coverBlurhash}
                   alt={portfolio.portfolioName}
                   className="w-full h-28 sm:h-32 object-cover transition-transform
                              duration-300 group-hover:scale-105"

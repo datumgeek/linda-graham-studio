@@ -130,6 +130,7 @@ export function PortfolioHomePage() {
       <RelatedWorks
         currentKey={portfolio.portfolio}
         currentListName={listName}
+        currentMedium={description.medium}
       />
     </div>
   );

@@ -148,9 +148,9 @@
 - ✅ Filter chips (medium, year)
 - ✅ Fuzzy search across names, captions, descriptions
 
-### 4.4 "Related Works" Section ⬜
-- ⬜ Same-category recommendations
-- ⬜ "You might also like" section
+### 4.4 "Related Works" Section ✅
+- ✅ Same-category recommendations with medium-based relevance scoring
+- ✅ "You Might Also Like" section with blurhash placeholders and WebP
 
 ### 4.5 Contact Form ⏭️
 - ⏭️ Skipped per user request
@@ -262,12 +262,12 @@
 | **12** | PWA service worker, bundle visualizer, toast, Playwright E2E, broken image fallback | ✅ |
 | **13** | JSON data extraction, image optimization pipeline, video facade, Storybook | ✅ |
 | **14** | Blurhash/LQIP placeholders, cover blurhash, auto palettes, unused image cleanup, preconnect hints | ✅ |
+| **15** | Enhanced Related Works (medium-based relevance, blurhash/WebP), carousel/video fixes | ✅ |
 
 ## Remaining Items
 
 | Item | Phase | Priority |
 |------|-------|----------|
-| Related Works section | 4.4 | Medium |
 | Visual regression tests (Chromatic/Percy) | 6.1 | Low |
 | Nx Libraries reorganization | 6.4 | Low |
 | Virtual Gallery Walk (Three.js) | 7.2 | Exploratory |
@@ -275,4 +275,4 @@
 
 ---
 
-*This plan has been systematically implemented across 14 sprints, transforming the site from a faithful Angular-to-React port into a modern, gallery-quality web experience worthy of Linda's art.*
+*This plan has been systematically implemented across 15 sprints, transforming the site from a faithful Angular-to-React port into a modern, gallery-quality web experience worthy of Linda's art.*

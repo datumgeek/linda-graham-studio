@@ -5,11 +5,10 @@
     <title>Linda Graham Studio</title>
     <script>
       // Single Page App redirect for GitHub Pages
-      // Redirects 404s to index.html with the path stored in sessionStorage
-      const path = window.location.pathname;
-      const base = '/linda-graham-studio';
-      const route = path.startsWith(base) ? path.slice(base.length) : path;
-      sessionStorage.setItem('redirect', route + window.location.search + window.location.hash);
+      // Stores the full path (including base) so replaceState restores
+      // the correct URL for React Router's basename matching.
+      var base = '/linda-graham-studio';
+      sessionStorage.setItem('redirect', window.location.pathname + window.location.search + window.location.hash);
       window.location.replace(base + '/');
     </script>
   </head>

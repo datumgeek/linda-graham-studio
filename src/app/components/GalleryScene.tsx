@@ -66,10 +66,28 @@ function ArtworkFrame({
   const [hovered, setHovered] = useState(false);
   const [textureLoaded, setTextureLoaded] = useState(false);
 
-  // Load artwork texture
+  const [loadError, setLoadError] = useState(false);
+
+  // Load artwork texture with error handling and URL encoding
   const texture = useMemo(() => {
     const loader = new THREE.TextureLoader();
-    const tex = loader.load(imageUrl, () => setTextureLoaded(true));
+    // Encode each path segment to handle spaces/special chars, but preserve slashes
+    const safeUrl = imageUrl
+      .split('/')
+      .map((seg) => encodeURIComponent(seg))
+      .join('/');
+    const tex = loader.load(
+      safeUrl,
+      (loaded) => {
+        setTextureLoaded(true);
+        setLoadError(false);
+      },
+      undefined,
+      (err) => {
+        console.warn(`Gallery: failed to load texture ${imageUrl}`, err);
+        setLoadError(true);
+      },
+    );
     tex.colorSpace = THREE.SRGBColorSpace;
     tex.minFilter = THREE.LinearFilter;
     tex.magFilter = THREE.LinearFilter;
@@ -118,8 +136,8 @@ function ArtworkFrame({
       >
         <planeGeometry args={[width, height]} />
         <meshStandardMaterial
-          map={textureLoaded ? texture : undefined}
-          color={textureLoaded ? '#ffffff' : '#e0d8cc'}
+          map={textureLoaded && !loadError ? texture : undefined}
+          color={textureLoaded && !loadError ? '#ffffff' : loadError ? '#d4cbbf' : '#e0d8cc'}
           emissive={new THREE.Color(ACCENT_GOLD)}
           emissiveIntensity={0}
           roughness={0.8}
@@ -390,7 +408,7 @@ export function GalleryScene({ artworks, onArtworkClick }: GallerySceneProps) {
           enablePan={false}
           enableZoom={true}
           enableRotate={true}
-          minDistance={2}
+          minDistance={0.5}
           maxDistance={14}
           maxPolarAngle={Math.PI / 2 - 0.05}
           minPolarAngle={0.3}

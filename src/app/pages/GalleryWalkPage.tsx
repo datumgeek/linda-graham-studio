@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import {
   portfolios,
+  getImageUrl,
   getPortfolioThumbUrl,
   type PortfolioListName,
 } from '../data/portfolio-data';
@@ -16,10 +17,17 @@ function buildArtworks(): ArtworkEntry[] {
 
   for (const listName of Object.keys(portfolios) as PortfolioListName[]) {
     for (const p of portfolios[listName]) {
+      // Prefer the first full-size image from the portfolio's images array
+      // (cover thumbnails are often tiny 300x200 which look blurry on 3D walls).
+      // Fall back to the cover image if no images array exists.
+      const firstImage = p.images?.[0];
+      const bestFile = firstImage?.imageLarge ?? firstImage?.imageSmall ?? p.portfolioImage;
+      const imageUrl = getImageUrl(listName, p.portfolio, bestFile);
+
       entries.push({
         listName,
         portfolio: p,
-        imageUrl: getPortfolioThumbUrl(listName, p.portfolio, p.portfolioImage),
+        imageUrl,
         label: p.portfolioName,
       });
     }

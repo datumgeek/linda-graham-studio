@@ -138,7 +138,6 @@ function ArtworkFrame({
         anchorX="center"
         anchorY="middle"
         maxWidth={width * 0.55}
-        font="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hjQ.woff2"
       >
         {label}
       </Text>

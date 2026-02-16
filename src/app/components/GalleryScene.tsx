@@ -64,34 +64,41 @@ function ArtworkFrame({
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
-  const [textureLoaded, setTextureLoaded] = useState(false);
-
+  const [texture, setTexture] = useState<THREE.Texture | null>(null);
   const [loadError, setLoadError] = useState(false);
 
-  // Load artwork texture with error handling and URL encoding
-  const texture = useMemo(() => {
-    const loader = new THREE.TextureLoader();
-    // Encode each path segment to handle spaces/special chars, but preserve slashes
-    const safeUrl = imageUrl
+  // Load artwork texture via useEffect for reliable React state updates
+  useEffect(() => {
+    let cancelled = false;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+
+    img.onload = () => {
+      if (cancelled) return;
+      const tex = new THREE.Texture(img);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.needsUpdate = true;
+      setTexture(tex);
+      setLoadError(false);
+    };
+
+    img.onerror = () => {
+      if (cancelled) return;
+      console.warn(`Gallery: failed to load texture ${imageUrl}`);
+      setLoadError(true);
+    };
+
+    // Encode each path segment to handle spaces/special chars
+    img.src = imageUrl
       .split('/')
       .map((seg) => encodeURIComponent(seg))
       .join('/');
-    const tex = loader.load(
-      safeUrl,
-      (loaded) => {
-        setTextureLoaded(true);
-        setLoadError(false);
-      },
-      undefined,
-      (err) => {
-        console.warn(`Gallery: failed to load texture ${imageUrl}`, err);
-        setLoadError(true);
-      },
-    );
-    tex.colorSpace = THREE.SRGBColorSpace;
-    tex.minFilter = THREE.LinearFilter;
-    tex.magFilter = THREE.LinearFilter;
-    return tex;
+
+    return () => {
+      cancelled = true;
+    };
   }, [imageUrl]);
 
   // Hover animation: gentle glow
@@ -136,8 +143,8 @@ function ArtworkFrame({
       >
         <planeGeometry args={[width, height]} />
         <meshStandardMaterial
-          map={textureLoaded && !loadError ? texture : undefined}
-          color={textureLoaded && !loadError ? '#ffffff' : loadError ? '#d4cbbf' : '#e0d8cc'}
+          map={texture}
+          color={texture ? '#ffffff' : loadError ? '#d4cbbf' : '#e0d8cc'}
           emissive={new THREE.Color(ACCENT_GOLD)}
           emissiveIntensity={0}
           roughness={0.8}

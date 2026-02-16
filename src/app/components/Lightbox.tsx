@@ -114,7 +114,7 @@ export function Lightbox({
 
       {/* Content */}
       <div
-        className="max-w-[95vw] max-h-[85vh] flex items-center justify-center"
+        className="w-[95vw] h-[85vh] flex items-center justify-center"
         onClick={(e) => e.stopPropagation()}
         {...swipeHandlers}
       >
@@ -129,7 +129,7 @@ export function Lightbox({
         >
           <TransformComponent
             wrapperStyle={{ width: '100%', height: '100%' }}
-            contentStyle={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+            contentStyle={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}
           >
             {children}
           </TransformComponent>

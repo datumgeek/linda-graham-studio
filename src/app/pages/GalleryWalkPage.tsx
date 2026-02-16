@@ -205,7 +205,7 @@ export function GalleryWalkPage() {
           <img
             src={currentArtwork.imageUrl}
             alt={currentArtwork.label}
-            className="max-w-[95vw] max-h-[85vh] object-contain select-none"
+            className="w-full h-full object-contain select-none"
             draggable={false}
           />
         )}

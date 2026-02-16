@@ -11,6 +11,7 @@ import { FadeIn } from '../components/FadeIn';
 import { SEO } from '../components/SEO';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import { GalleryScene, type ArtworkEntry } from '../components/GalleryScene';
+import { Lightbox } from '../components/Lightbox';
 
 function buildArtworks(): ArtworkEntry[] {
   const entries: ArtworkEntry[] = [];
@@ -102,17 +103,35 @@ export function GalleryWalkPage() {
   const navigate = useNavigate();
   const artworks = useMemo(() => buildArtworks(), []);
   const [webGLSupported, setWebGLSupported] = useState<boolean | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setWebGLSupported(detectWebGL());
   }, []);
 
-  const handleArtworkClick = useCallback(
-    (listName: PortfolioListName, portfolioKey: string) => {
-      navigate(`/portfolio/${listName}/${portfolioKey}`);
-    },
-    [navigate],
+  const handleArtworkClick = useCallback((index: number) => {
+    setLightboxIndex(index);
+  }, []);
+
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+
+  const prevArtwork = useCallback(
+    () =>
+      setLightboxIndex((i) =>
+        i !== null ? (i - 1 + artworks.length) % artworks.length : null,
+      ),
+    [artworks.length],
   );
+
+  const nextArtwork = useCallback(
+    () =>
+      setLightboxIndex((i) =>
+        i !== null ? (i + 1) % artworks.length : null,
+      ),
+    [artworks.length],
+  );
+
+  const currentArtwork = lightboxIndex !== null ? artworks[lightboxIndex] : null;
 
   return (
     <>
@@ -172,6 +191,25 @@ export function GalleryWalkPage() {
           )}
         </div>
       </FadeIn>
+
+      {/* Fullscreen lightbox for clicked artwork */}
+      <Lightbox
+        isOpen={lightboxIndex !== null}
+        onClose={closeLightbox}
+        onPrev={prevArtwork}
+        onNext={nextArtwork}
+        caption={currentArtwork?.label}
+        counter={currentArtwork ? `${lightboxIndex! + 1} / ${artworks.length}` : undefined}
+      >
+        {currentArtwork && (
+          <img
+            src={currentArtwork.imageUrl}
+            alt={currentArtwork.label}
+            className="max-w-[95vw] max-h-[85vh] object-contain select-none"
+            draggable={false}
+          />
+        )}
+      </Lightbox>
     </>
   );
 }

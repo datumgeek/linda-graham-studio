@@ -17,7 +17,7 @@ interface ArtworkEntry {
 
 interface GallerySceneProps {
   artworks: ArtworkEntry[];
-  onArtworkClick: (listName: PortfolioListName, portfolioKey: string) => void;
+  onArtworkClick: (index: number) => void;
 }
 
 /* ------------------------------------------------------------------ */
@@ -422,9 +422,7 @@ export function GalleryScene({ artworks, onArtworkClick }: GallerySceneProps) {
             rotation={rotation}
             texture={textureMap.get(artwork.imageUrl) ?? null}
             label={artwork.label}
-            onClick={() =>
-              onArtworkClick(artwork.listName, artwork.portfolio.portfolio)
-            }
+            onClick={() => onArtworkClick(idx)}
           />
         ))}
 

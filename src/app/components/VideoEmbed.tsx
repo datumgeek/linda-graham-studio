@@ -24,13 +24,7 @@ function parseJwPlatformUrl(src: string): { mp4: string; poster: string } | null
   };
 }
 
-/*// Try to extract direct MP4 + poster from JW Platform URL
-  const jwInfo = useMemo(() => parseJwPlatformUrl(secureSrc), [secureSrc]);
-
-  // Use JW poster if no custom poster provided
-  const effectivePoster = posterSrc || jwInfo?.poster;
-
-  *
+/**
  * Lazy video embed — shows a lightweight poster facade that loads
  * the actual video only when the user clicks play.
  *
@@ -43,6 +37,12 @@ export function VideoEmbed({ src, title, className = '', posterSrc }: VideoEmbed
 
   // Upgrade http → https when possible
   const secureSrc = src.replace(/^http:\/\//, 'https://');
+
+  // Try to extract direct MP4 + poster from JW Platform URL
+  const jwInfo = useMemo(() => parseJwPlatformUrl(secureSrc), [secureSrc]);
+
+  // Use JW poster if no custom poster provided
+  const effectivePoster = posterSrc || jwInfo?.poster;
 
   const handleActivate = useCallback(() => {
     setActivated(true);

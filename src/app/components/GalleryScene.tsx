@@ -1,12 +1,6 @@
 import { useRef, useMemo, useState, useCallback, useEffect } from 'react';
-import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
-import {
-  OrbitControls,
-  Text,
-  Environment,
-  useTexture,
-  RoundedBox,
-} from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Text } from '@react-three/drei';
 import * as THREE from 'three';
 import type { Portfolio, PortfolioListName } from '../data/portfolio-data';
 
@@ -40,66 +34,89 @@ const FRAME_COLOR = '#3a2f28';
 const ACCENT_GOLD = '#b8860b';
 
 /* ------------------------------------------------------------------ */
+/*  Texture preloader — loads ALL textures before Canvas mounts        */
+/* ------------------------------------------------------------------ */
+
+/** Encode each path segment for safe URLs */
+function encodeImageUrl(url: string): string {
+  return url
+    .split('/')
+    .map((seg) => encodeURIComponent(seg))
+    .join('/');
+}
+
+/**
+ * Preload textures using THREE.TextureLoader.loadAsync().
+ * Returns a Map from original imageUrl → loaded THREE.Texture (or null on error).
+ */
+export function usePreloadedTextures(imageUrls: string[]) {
+  const [textureMap, setTextureMap] = useState<Map<string, THREE.Texture | null>>(
+    new Map(),
+  );
+  const [ready, setReady] = useState(false);
+
+  // Stable key for the URL list so we don't re-run unnecessarily
+  const urlKey = useMemo(() => imageUrls.join('|'), [imageUrls]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const loader = new THREE.TextureLoader();
+    loader.setCrossOrigin('anonymous');
+
+    Promise.all(
+      imageUrls.map((url) =>
+        loader
+          .loadAsync(encodeImageUrl(url))
+          .then((tex) => {
+            tex.colorSpace = THREE.SRGBColorSpace;
+            tex.minFilter = THREE.LinearFilter;
+            tex.magFilter = THREE.LinearFilter;
+            return [url, tex] as [string, THREE.Texture];
+          })
+          .catch((err) => {
+            console.warn('Gallery: failed to preload texture', url, err);
+            return [url, null] as [string, null];
+          }),
+      ),
+    ).then((entries) => {
+      if (cancelled) return;
+      setTextureMap(new Map(entries));
+      setReady(true);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urlKey]);
+
+  return { textureMap, ready };
+}
+
+/* ------------------------------------------------------------------ */
 /*  Artwork Frame — a framed painting on the wall                     */
+/*  Receives a pre-loaded texture; no async work inside Canvas.       */
 /* ------------------------------------------------------------------ */
 
 function ArtworkFrame({
   position,
   rotation,
-  imageUrl,
+  texture,
   label,
   width = 2.4,
   height = 1.8,
   onClick,
-  artworkId,
 }: {
   position: [number, number, number];
   rotation: [number, number, number];
-  imageUrl: string;
+  texture: THREE.Texture | null;
   label: string;
   width?: number;
   height?: number;
   onClick: () => void;
-  artworkId: string;
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
-  const [texture, setTexture] = useState<THREE.Texture | null>(null);
-  const [loadError, setLoadError] = useState(false);
-
-  // Load artwork texture via useEffect for reliable React state updates
-  useEffect(() => {
-    let cancelled = false;
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-
-    img.onload = () => {
-      if (cancelled) return;
-      const tex = new THREE.Texture(img);
-      tex.colorSpace = THREE.SRGBColorSpace;
-      tex.minFilter = THREE.LinearFilter;
-      tex.magFilter = THREE.LinearFilter;
-      tex.needsUpdate = true;
-      setTexture(tex);
-      setLoadError(false);
-    };
-
-    img.onerror = () => {
-      if (cancelled) return;
-      console.warn(`Gallery: failed to load texture ${imageUrl}`);
-      setLoadError(true);
-    };
-
-    // Encode each path segment to handle spaces/special chars
-    img.src = imageUrl
-      .split('/')
-      .map((seg) => encodeURIComponent(seg))
-      .join('/');
-
-    return () => {
-      cancelled = true;
-    };
-  }, [imageUrl]);
 
   // Hover animation: gentle glow
   useFrame(() => {
@@ -142,13 +159,22 @@ function ArtworkFrame({
         onPointerOut={handlePointerOut}
       >
         <planeGeometry args={[width, height]} />
-        <meshStandardMaterial
-          map={texture}
-          color={texture ? '#ffffff' : loadError ? '#d4cbbf' : '#e0d8cc'}
-          emissive={new THREE.Color(ACCENT_GOLD)}
-          emissiveIntensity={0}
-          roughness={0.8}
-        />
+        {texture ? (
+          <meshStandardMaterial
+            map={texture}
+            color="#ffffff"
+            emissive={new THREE.Color(ACCENT_GOLD)}
+            emissiveIntensity={0}
+            roughness={0.8}
+          />
+        ) : (
+          <meshStandardMaterial
+            color="#d4cbbf"
+            emissive={new THREE.Color(ACCENT_GOLD)}
+            emissiveIntensity={0}
+            roughness={0.8}
+          />
+        )}
       </mesh>
 
       {/* Label plaque */}
@@ -292,31 +318,13 @@ function GalleryLighting() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Info panel (bottom overlay, shown on hover)                       */
-/* ------------------------------------------------------------------ */
-
-function InfoOverlay({
-  label,
-  visible,
-}: {
-  label: string;
-  visible: boolean;
-}) {
-  if (!visible) return null;
-  return (
-    <div className="absolute bottom-20 left-1/2 -translate-x-1/2 bg-base-100/90 backdrop-blur-sm rounded-lg px-6 py-3 shadow-xl pointer-events-none transition-opacity z-10">
-      <p className="text-sm font-serif text-center">{label}</p>
-      <p className="text-xs text-base-content/60 text-center mt-1">Click to explore</p>
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /*  Main Exported Scene                                                */
 /* ------------------------------------------------------------------ */
 
 export function GalleryScene({ artworks, onArtworkClick }: GallerySceneProps) {
-  const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
+  // Preload ALL textures before mounting the Canvas
+  const imageUrls = useMemo(() => artworks.map((a) => a.imageUrl), [artworks]);
+  const { textureMap, ready } = usePreloadedTextures(imageUrls);
 
   // Compute artwork positions along walls
   const placements = useMemo(() => {
@@ -377,6 +385,18 @@ export function GalleryScene({ artworks, onArtworkClick }: GallerySceneProps) {
     return result;
   }, [artworks]);
 
+  // Show loading state until all textures are preloaded
+  if (!ready) {
+    return (
+      <div className="relative w-full h-full flex items-center justify-center bg-base-200">
+        <div className="text-center">
+          <span className="loading loading-spinner loading-lg text-primary" />
+          <p className="mt-4 text-sm text-base-content/60">Loading artwork textures…</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative w-full h-full">
       <Canvas
@@ -389,7 +409,6 @@ export function GalleryScene({ artworks, onArtworkClick }: GallerySceneProps) {
         shadows
         gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }}
         onPointerMissed={() => {
-          setHoveredLabel(null);
           document.body.style.cursor = 'default';
         }}
       >
@@ -398,11 +417,10 @@ export function GalleryScene({ artworks, onArtworkClick }: GallerySceneProps) {
 
         {placements.map(({ position, rotation, artwork }, idx) => (
           <ArtworkFrame
-            key={`${artwork.portfolio.portfolio}-${idx}`}
-            artworkId={artwork.portfolio.portfolio}
+            key={artwork.portfolio.portfolio}
             position={position}
             rotation={rotation}
-            imageUrl={artwork.imageUrl}
+            texture={textureMap.get(artwork.imageUrl) ?? null}
             label={artwork.label}
             onClick={() =>
               onArtworkClick(artwork.listName, artwork.portfolio.portfolio)

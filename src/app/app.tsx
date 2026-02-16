@@ -52,8 +52,8 @@ export function App() {
               path="/portfolio/:listName/:portfolioKey"
               element={<PortfolioLayout />}
             >
-              <Route index element={<PortfolioHomePage />} />
-              <Route path="grid" element={<PortfolioGridPage />} />
+              <Route index element={<PortfolioGridPage />} />
+              <Route path="info" element={<PortfolioHomePage />} />
               <Route path="carousel/:slideIndex" element={<PortfolioCarouselPage />} />
             </Route>
             <Route path="/about" element={<AboutPage />} />

@@ -31,8 +31,8 @@ export function Breadcrumbs() {
 
     // Sub-view
     const path = location.pathname;
-    if (path.endsWith('/grid')) {
-      crumbs.push({ label: 'Grid' });
+    if (path.endsWith('/info')) {
+      crumbs.push({ label: 'Info' });
     } else if (slideIndex !== undefined) {
       crumbs.push({ label: 'Slideshow' });
     }

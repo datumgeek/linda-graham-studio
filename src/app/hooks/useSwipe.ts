@@ -23,8 +23,13 @@ export function useSwipe({
   const isMultiTouch = useRef(false);
 
   const onTouchStart = useCallback((e: TouchEvent) => {
-    // If more than one finger is on the screen, mark as multi-touch (pinch/zoom)
-    isMultiTouch.current = e.touches.length > 1;
+    // Reset multi-touch flag only when a fresh single-finger gesture begins
+    if (e.touches.length === 1) {
+      isMultiTouch.current = false;
+    } else {
+      // Two or more fingers from the start — mark as multi-touch
+      isMultiTouch.current = true;
+    }
     startX.current = e.touches[0].clientX;
     startY.current = e.touches[0].clientY;
     deltaX.current = 0;
@@ -36,6 +41,9 @@ export function useSwipe({
       isMultiTouch.current = true;
       return;
     }
+    // Don't track movement if the gesture was already a pinch
+    if (isMultiTouch.current) return;
+
     deltaX.current = e.touches[0].clientX - startX.current;
     const deltaY = Math.abs(e.touches[0].clientY - startY.current);
     // If horizontal swipe is dominant, prevent vertical scroll
@@ -54,7 +62,9 @@ export function useSwipe({
       }
     }
     deltaX.current = 0;
-    isMultiTouch.current = false;
+    // Do NOT reset isMultiTouch here — a pinch gesture fires multiple
+    // touchend events (one per finger). Resetting here would let the
+    // second finger-up misfire as a swipe. It resets in onTouchStart.
   }, [onSwipeLeft, onSwipeRight, threshold]);
 
   return { onTouchStart, onTouchMove, onTouchEnd };
